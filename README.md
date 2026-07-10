@@ -5,10 +5,11 @@ Claude-native authoring surface, and a downstream MCP so consumer apps can
 discover components + tokens by name.
 
 **Scope:** React Native only. Presentational + interactive primitives, slot
-compositions, and a small icon set generated from SVGs.
+compositions, and design tokens.
 
 **Non-scope:** Web components, framework-agnostic wrappers, a11y automation
-in CI (soft-enforced in review — see [AGENTS.md](./AGENTS.md)).
+in CI (soft-enforced in review — see [AGENTS.md](./AGENTS.md)), icon or font
+asset pipeline (deferred pending a coherent asset strategy).
 
 ## Packages
 
@@ -16,7 +17,6 @@ in CI (soft-enforced in review — see [AGENTS.md](./AGENTS.md)).
 |-------------------------|---------------------------------------------------------------------|----------------------------------------------|
 | `@rn-ds/tokens`         | SSOT design tokens → typed ESM exports (colors, spacing, radii, …)  | `dist/` (ESM) + `src/design-tokens.json`     |
 | `@rn-ds/components`     | Button, Status via react-native-builder-bob                         | `lib/` (cjs+esm+types) + `manifest.json`     |
-| `@rn-ds/icons`          | SVGs in `svgs/` → `react-native-svg` components via svgr            | `lib/` (cjs+esm+types) + generated `src/`    |
 
 Each versions independently via `semantic-release` (per-package `commitPaths`
 + `tagFormat`).
@@ -42,7 +42,7 @@ npm install                     # workspaces install (packages + apps + mcp)
 
 # Everyday
 npm run typecheck               # tokens build then tsc across workspaces
-npm run build                   # tokens → icons → components (bob)
+npm run build                   # tokens → components (bob)
 npm run test                    # placeholder (no jest yet)
 npm run check                   # typecheck + build + test
 npm run manifest                # gen dist/manifest.json + packages/components/manifest.json
@@ -116,8 +116,7 @@ For an RN app that consumes this DS:
 {
   "dependencies": {
     "@rn-ds/components": "1.4.0",
-    "@rn-ds/tokens": "1.2.0",
-    "@rn-ds/icons": "1.0.0"
+    "@rn-ds/tokens": "1.2.0"
   }
 }
 ```
@@ -152,6 +151,48 @@ will query the MCP for available components + tokens before writing markup.
 
 (A published `@rn-ds/manifest-mcp` package will replace the copy step later.)
 
+## Docs deployment (Vercel)
+
+`vercel.json` at the repo root wires the Storybook static build to Vercel.
+Connect the repo in the Vercel dashboard:
+
+1. **New Project** → pick the GitHub repo.
+2. **Root Directory**: leave as `/` (repo root — `vercel.json` handles the rest).
+3. **Framework Preset**: `Other` (Vercel autodetects from `vercel.json`).
+4. **Node Version**: 20.x (set via `.nvmrc` + `engines`).
+5. Save. First deploy fires.
+
+### What versioning looks like
+
+Once wired, Vercel gives you three URL flavors — this is the "versioning" the
+docs get for free:
+
+| URL flavor           | When it's created                                     | Example                                        |
+|----------------------|-------------------------------------------------------|------------------------------------------------|
+| **Production**       | Every push to `main`                                  | `rn-ds.vercel.app`                             |
+| **Preview per branch** | Every push to any non-main branch                   | `rn-ds-git-<branch>-<owner>.vercel.app`        |
+| **Preview per commit** | Every commit (immutable snapshot)                    | `rn-ds-<sha>-<owner>.vercel.app`               |
+| **Preview per PR**     | PR opens/updates; Vercel bot comments the URL       | Same as commit URL, linked from PR             |
+
+**Design review flow:** open a PR → Vercel bot posts the preview URL → the
+designer clicks it and sees the new component live in the browser without
+pulling code. This is the closest thing to "designer contributes without
+touching code" that the ergonomics allow.
+
+### Per-release tagged aliases (optional follow-up)
+
+If you want a permanent URL per release tag (e.g.
+`v1-0-0-rn-ds.vercel.app`), add a GitHub Action that runs on tag push and
+calls `vercel --prod --alias <tag>-rn-ds.vercel.app`. Requires:
+
+- `VERCEL_TOKEN` secret (from Vercel account settings)
+- `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` secrets (from `.vercel/project.json`
+  after first CLI deploy)
+- A hostname in the alias that you control (Vercel wildcard domains cost $)
+
+Skip this until you actually want to compare v1.0.0 docs side-by-side with
+v1.1.0. Commit-preview URLs cover most needs.
+
 ## Distribution
 
 - **Now:** tarballs attached to each GitHub Release
@@ -177,7 +218,6 @@ rn-ds/
 │  └─ storybook/               @rn-ds/docs — storybook web
 ├─ packages/
 │  ├─ components/              @rn-ds/components
-│  ├─ icons/                   @rn-ds/icons
 │  └─ tokens/                  @rn-ds/tokens
 ├─ tools/
 │  ├─ gen-manifest.mjs         react-docgen-typescript → dist + packages/components
@@ -198,7 +238,7 @@ Open Claude Code in this repo. Say:
   scaffolds it.
 - *"port Card from ../designworkflow"* → ds-authoring reads the HTML/CSS
   source and drafts an RN version.
-- *"add a home icon"* → drop an SVG into `packages/icons/svgs/home.svg`,
-  ask Claude to regenerate; it runs `npm run generate --workspace=@rn-ds/icons`
-  and updates the barrel.
+- *"add a `warning` color scale"* → ds-authoring edits
+  `packages/tokens/src/design-tokens.json`, regenerates the typed exports,
+  drafts a `feat(tokens):` commit.
 - *"what does Button take?"* → ds-manifest MCP answers via `get_component`.

@@ -59,7 +59,6 @@ const manifest = {
   versions: {
     tokens: versionOf('packages/tokens'),
     components: versionOf('packages/components'),
-    icons: versionOf('packages/icons'),
   },
   components,
   tokens,

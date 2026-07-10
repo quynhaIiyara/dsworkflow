@@ -8,11 +8,11 @@
     ".claude/mcp/*"
   ],
   "scripts": {
-    "build": "npm run build --workspace=@rn-ds/tokens && npm run build --workspace=@rn-ds/icons --if-present && npm run build --workspace=@rn-ds/components",
+    "build": "npm run build --workspace=@rn-ds/tokens && npm run build --workspace=@rn-ds/components",
     "typecheck": "npm run build --workspace=@rn-ds/tokens && npm run typecheck --workspaces --if-present",
     "manifest": "node tools/gen-manifest.mjs",
-    "storybook": "npm run storybook --workspace=@rn-ds/docs",
-    "storybook:build": "npm run build --workspace=@rn-ds/docs",
+    "storybook": "npm run build --workspace=@rn-ds/tokens && npm run storybook --workspace=@rn-ds/docs",
+    "storybook:build": "npm run build --workspace=@rn-ds/tokens && npm run manifest && npm run build --workspace=@rn-ds/docs",
     "test": "npm run test --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "check": "npm run typecheck && npm run build && npm run test",
