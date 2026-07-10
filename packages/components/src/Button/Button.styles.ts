@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
   size_sm: { paddingVertical: spacing.s1, paddingHorizontal: spacing.s2, minHeight: 32 },
   size_md: { paddingVertical: spacing.s2, paddingHorizontal: spacing.s4, minHeight: 40 },
   size_lg: { paddingVertical: spacing.s4, paddingHorizontal: spacing.s6, minHeight: 48 },
-  variant_primary: { backgroundColor: colors.blue },
+  variant_primary: { backgroundColor: colors.green },
   variant_secondary: { backgroundColor: colors.hairline },
   variant_ghost: { backgroundColor: 'transparent' },
   variant_danger: { backgroundColor: colors.red },
@@ -29,6 +29,6 @@ export const labelStyles = StyleSheet.create({
   size_lg: { fontSize: typography.size.lg },
   variant_primary: { color: colors.white },
   variant_secondary: { color: colors.ink },
-  variant_ghost: { color: colors.blue },
+  variant_ghost: { color: colors.green },
   variant_danger: { color: colors.white },
 });
