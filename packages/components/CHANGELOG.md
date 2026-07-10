@@ -1,3 +1,9 @@
+## [2.3.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.2.0...@rn-ds/components-v2.3.0) (2026-07-10)
+
+### Features
+
+* **components:** add Card compound primitive ([00959ec](https://github.com/quynhaIiyara/dsworkflow/commit/00959ec488baa489b026a68b7655cfa3fa855505))
+
 ## [2.2.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.1.0...@rn-ds/components-v2.2.0) (2026-07-10)
 
 ### Features
