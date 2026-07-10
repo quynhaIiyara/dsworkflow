@@ -30,8 +30,10 @@ with success/error variants"*, do this in order:
    token addition **as a separate step** — never inline a hex/px number.
 4. **Pick a reference component** from `packages/components/src/`. `Button/`
    is the canonical example for interactive components. `Status/` is the
-   canonical example for presentational chips.
-5. **Scaffold the component** using the file layout below.
+   canonical example for presentational chips. `Table/` is the canonical
+   example for compound components with subcomponents.
+5. **Scaffold the component** using the file layout below. This includes a
+   `.stories.tsx` file — every shipped component has one; do not skip it.
 6. **Wire the barrel export** in `packages/components/src/index.ts`.
 7. **Draft the Conventional Commit** using the correct scope.
 8. **Show the diff to the user, ask for confirmation, then commit.**
@@ -76,9 +78,62 @@ question.
 packages/components/src/<Name>/
 ├─ <Name>.tsx          — the component
 ├─ <Name>.styles.ts    — StyleSheet, imports only from @rn-ds/tokens
-├─ <Name>.test.tsx     — @testing-library/react-native smoke test
+├─ <Name>.stories.tsx  — @storybook/react stories (see pattern below)
 └─ index.ts            — re-exports the public API + types
 ```
+
+Tests are aspirational — there is no jest config in this repo yet, and the
+`test` script is a no-op. **Do not add `<Name>.test.tsx` files** until test
+infra lands. When tests do arrive, they'll go alongside the stories file.
+
+### Stories file pattern
+
+Every component ships a `.stories.tsx` that follows the shape used by
+`Button.stories.tsx`, `Status.stories.tsx`, `Table.stories.tsx`:
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { Foo } from './Foo';
+
+const meta: Meta<typeof Foo> = {
+  title: 'Components/Foo',
+  component: Foo,
+  tags: ['autodocs'],
+  parameters: {
+    status: 'ready',
+    since: 'v0.1.0',
+    docs: { description: { component: 'One-sentence what-and-when.' } },
+  },
+  args: { /* default args */ },
+  argTypes: {
+    variant: { control: 'select', options: ['a', 'b'] },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof Foo>;
+
+export const Default: Story = {};
+export const OtherVariant: Story = { args: { variant: 'b' } };
+export const AllVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Foo variant="a" />
+      <Foo variant="b" />
+    </div>
+  ),
+};
+```
+
+Notes on the stories file:
+- Storybook runs on the web (`@storybook/react`, not `@storybook/react-native`).
+  Layout wrappers in `render` use `<div>`, not `<View>`. The components
+  themselves are RN and render through the web adapter.
+- Include at least: a `Default` story, one story per variant/tone, and an
+  `AllVariants` (or `AllTones`, `AllSizes`) gallery render.
+- For stateful demos (Modal, BottomSheet, controlled inputs), define a small
+  local `FooDemo` component inside the stories file that owns the state, and
+  use it as the story's `render`.
 
 ## Component authoring rules
 
@@ -224,6 +279,19 @@ tones via a `variantToTone` map).
 - **A one-off style that doesn't warrant a token** (e.g. a specific animated
   spring config): keep the constant inline in the `<Name>.styles.ts` file
   with a `// justified: ...` comment explaining why it isn't a token.
+
+- **Icon-shaped slots** (leading glyph on a banner/row/button): rn-ds ships
+  no Icon component and no asset pipeline. Accept an optional
+  `icon?: ReactNode` prop so the consumer supplies their own element from
+  whatever icon library they use downstream. Do not hardcode a specific
+  icon dep. For unavoidable glyphs (dismiss ×), use a Unicode character in
+  `<Text>` and treat it as a temporary shim.
+
+- **Safe-area handling**: do NOT reach for `react-native-safe-area-context`
+  inside a component — it would force a new peer dep on every consumer.
+  Instead, use a fixed bottom padding (e.g. `spacing.s7`) and document
+  that consumers on notched devices should wrap their own content with
+  safe-area padding.
 
 ## Before you commit
 
