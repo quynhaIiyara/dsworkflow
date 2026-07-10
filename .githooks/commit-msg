@@ -2,4 +2,26 @@
 # Enforce Conventional Commits (see AGENTS.md) at commit time.
 # CI runs the same check on PRs; this hook prevents you from ever pushing a
 # commit CI will reject.
-npx --no -- commitlint --edit "$1"
+#
+# Skip on:
+#   - Release-bot commits ("chore(release): ..."). semantic-release generates
+#     these with auto-produced changelog bodies that may exceed the
+#     body-max-line-length rule — that's fine, they're bot output, not
+#     human-authored, and never go through PR review.
+#   - Merge commits (git creates the message).
+#   - Explicit override via CLAUDE_COMMIT_LINT_SKIP=1 (escape hatch for
+#     amend/rebase workflows where the message was already validated).
+msg_file="$1"
+first_line=$(head -n 1 "$msg_file")
+
+case "$first_line" in
+  "chore(release):"*|"Merge "*)
+    exit 0
+    ;;
+esac
+
+if [ "${CLAUDE_COMMIT_LINT_SKIP:-0}" = "1" ]; then
+  exit 0
+fi
+
+npx --no -- commitlint --edit "$msg_file"
