@@ -1,24 +1,23 @@
 import { Meta } from '@storybook/blocks';
+import { Changelogs } from './_components/Changelogs';
 
 <Meta title="Get Started/Changelog" />
 
 # Changelog
 
-Per-package changelogs are shipped inside each release tarball as
-`CHANGELOG.md`. `semantic-release` maintains them automatically on every
-merge to `main` that includes a semver-relevant commit.
+Per-package changelogs live in `packages/<name>/CHANGELOG.md`, maintained
+automatically by `semantic-release` on every merge to `main` that includes a
+semver-relevant commit (`feat` / `fix` / `perf` / `BREAKING CHANGE`).
 
-## Where to look
-
-| Package             | Location                                       |
-|---------------------|------------------------------------------------|
-| `@rn-ds/tokens`     | `packages/tokens/CHANGELOG.md` in the repo, or the release notes on the GitHub Release page |
-| `@rn-ds/components` | `packages/components/CHANGELOG.md`             |
-| `@rn-ds/icons`      | `packages/icons/CHANGELOG.md`                  |
+This page renders the current contents at build time — Vercel rebuilds the
+docs on every push, including the `chore(release): ...` commit that
+`semantic-release` pushes back with `[skip ci]` (Vercel doesn't respect that
+marker, only GitHub Actions does), so this view is always current with the
+latest release.
 
 ## Format
 
-Each entry is grouped by commit type:
+Each entry is grouped by commit type. Example:
 
 ```markdown
 ## [1.4.0](https://github.com/...) (2026-07-10)
@@ -32,7 +31,9 @@ Each entry is grouped by commit type:
 * **components:** correct disabled opacity on Button ghost variant ([def5678](https://...))
 ```
 
-## Aggregate view
+Each version link points at the GitHub compare view between the previous tag
+and this one, so you can see the exact commits that landed.
 
-An aggregate view across all packages will land here after the first real
-release. For now, check each package's `CHANGELOG.md` directly.
+## Per-package release history
+
+<Changelogs />
