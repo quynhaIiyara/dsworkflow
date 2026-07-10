@@ -46,18 +46,33 @@ if [ "$SNAPSHOT" = "true" ]; then
 fi
 
 # Normal release: walk each package's release.config.js.
+#
+# Errors are NOT swallowed. If semantic-release fails for any package, this
+# script exits non-zero and CI turns red. "No release needed" is a clean exit
+# 0 from semrel; a hook failure or GitHub API failure is exit 1 and MUST be
+# visible so it gets fixed. The previous "|| echo no-op" masked a
+# commitlint-hook-vs-release-commit collision for weeks.
+failed=""
 for cfg in packages/*/release.config.js; do
   pkg_dir="$(dirname "$cfg")"
   echo "──────────────────────────────────────────────"
   echo "Releasing from $pkg_dir"
   echo "──────────────────────────────────────────────"
-  (
+  if (
     cd "$pkg_dir"
-    # Pack the package first so @semantic-release/github can attach the tarball.
     npm pack
-    npx --yes semantic-release --extends "./release.config.js" || {
-      echo "semantic-release exited non-zero for $pkg_dir — treating as no-op"
-    }
+    npx --yes semantic-release --extends "./release.config.js"
     rm -f ./*.tgz
-  )
+  ); then
+    :
+  else
+    failed="$failed $pkg_dir"
+  fi
 done
+
+if [ -n "$failed" ]; then
+  echo "──────────────────────────────────────────────"
+  echo "❌ semantic-release failed for:$failed"
+  echo "──────────────────────────────────────────────"
+  exit 1
+fi
