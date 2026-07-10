@@ -6,8 +6,9 @@ description: Author components and tokens in the rn-ds repo. Use this when a des
 # ds-authoring
 
 You are helping a designer or engineer contribute to **rn-ds**, a React Native
-design system. The repo publishes three packages: `@rn-ds/tokens`,
-`@rn-ds/components`, and (soon) `@rn-ds/icons`.
+design system. The repo publishes two packages: `@rn-ds/tokens` and
+`@rn-ds/components`. An asset pipeline (icons, fonts) is deliberately
+deferred — do not scaffold one without asking.
 
 **Non-goals of this skill:** web-only patterns, Storybook web setup, framework
 migration. Stay in RN.
@@ -100,8 +101,7 @@ packages/components/src/<Name>/
 **Scopes** (enforced by commitlint):
 - `components` — anything under `packages/components/`
 - `tokens` — anything under `packages/tokens/`
-- `icons` — anything under `packages/icons/` (when added)
-- `skills`, `mcp`, `ci`, `deps`, `release`, `repo` — see AGENTS.md
+- `skills`, `mcp`, `ci`, `deps`, `release`, `repo`, `docs` — see AGENTS.md
 
 **Types that cut releases:** `feat` (minor), `fix` (patch), `perf` (patch).
 Add `BREAKING CHANGE:` in the body to bump major.

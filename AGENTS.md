@@ -39,10 +39,10 @@ Add `BREAKING CHANGE:` in the commit body/footer to bump **major**. Include a
 |--------------|--------------------------------------------------|
 | `components` | Anything in `packages/components/`               |
 | `tokens`     | Anything in `packages/tokens/`                   |
-| `icons`      | Anything in `packages/icons/` (when added)       |
 | `skills`     | `.claude/skills/*`                               |
 | `mcp`        | `.claude/mcp/*`                                  |
 | `ci`         | `.github/workflows/*`                            |
+| `docs`       | `apps/storybook/*`, `README.md`, other docs      |
 | `deps`       | Dependency bumps at root or shared               |
 | `release`    | Reserved for semrel bot: `chore(release): ...`   |
 | `repo`       | Root-level config, gitignore, tsconfig.base      |

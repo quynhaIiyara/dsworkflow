@@ -4,4 +4,3 @@ dist
 storybook-static
 packages/tokens/src/*.ts
 !packages/tokens/src/index.ts
-packages/icons/src

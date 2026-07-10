@@ -69,7 +69,7 @@ const tools = [
   {
     name: 'get_versions',
     description:
-      'Return the current version of each package (tokens, components, icons). Use this to verify what version the consumer is pinned to.',
+      'Return the current version of each package (tokens, components). Use this to verify what version the consumer is pinned to.',
     inputSchema: { type: 'object', properties: {} },
   },
 ];

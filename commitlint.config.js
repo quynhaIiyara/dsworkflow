@@ -9,7 +9,7 @@ module.exports = {
     'scope-enum': [
       2,
       'always',
-      ['components', 'tokens', 'icons', 'skills', 'mcp', 'ci', 'deps', 'release', 'repo'],
+      ['components', 'tokens', 'skills', 'mcp', 'ci', 'deps', 'release', 'repo', 'docs'],
     ],
     'scope-empty': [2, 'never'],
     'subject-case': [0],

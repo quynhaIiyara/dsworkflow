@@ -6,9 +6,14 @@ description: Use rn-ds components correctly in a downstream React Native app. Qu
 # ds-consumer
 
 You are helping build UI in a React Native app that consumes **rn-ds**
-(`@rn-ds/components`, `@rn-ds/tokens`, `@rn-ds/icons`). This skill applies in
-**downstream apps** — not in the rn-ds repo itself. If you are editing files
-under `packages/components/` or `packages/tokens/`, use `ds-authoring` instead.
+(`@rn-ds/components`, `@rn-ds/tokens`). This skill applies in **downstream
+apps** — not in the rn-ds repo itself. If you are editing files under
+`packages/components/` or `packages/tokens/`, use `ds-authoring` instead.
+
+**No icon package.** The DS does not ship icons or fonts. If the consumer
+needs an icon, pull it from a general library (e.g. `lucide-react-native`,
+`react-native-vector-icons`) OR bespoke SVGs in the app. Do not fabricate an
+`@rn-ds/icons` import — it does not exist.
 
 **Non-goals of this skill:** modifying the DS itself, styling components in
 ways that override token values, deep-importing from internal paths.
@@ -99,7 +104,6 @@ Good:
 ```tsx
 import { Button, Status } from '@rn-ds/components';
 import { colors, spacing } from '@rn-ds/tokens';
-import { Check, ChevronRight } from '@rn-ds/icons';
 ```
 
 Bad (Claude will refuse):
@@ -190,8 +194,8 @@ If you have a screen with multiple actions of the same type, spell them out:
 - **Layout composition beyond what DS offers** — that's fine, that's the
   consumer's job. Compose DS primitives with `View`, `ScrollView`, `Pressable`
   freely.
-- **Icons the DS doesn't have** — say so, propose adding to the icons package
-  in a separate `feat(icons):` PR. Do not embed inline SVGs in the consumer
-  app.
+- **Icons** — the DS does not ship them. Use a general RN icon library
+  (`lucide-react-native` is the current default) or bespoke SVGs via
+  `react-native-svg`. Style with `@rn-ds/tokens` colors.
 - **Business logic** — belongs in the consumer app. Do not push behavior
   down into the DS.
