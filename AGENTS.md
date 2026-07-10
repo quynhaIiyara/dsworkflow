@@ -3,6 +3,33 @@
 This file tells humans and AI agents (Claude Code, Cursor, whatever) how to
 contribute to this repo. Read this before writing a commit.
 
+## Branch hygiene
+
+One branch = one scope = one PR. Do not stack unrelated work onto an
+in-flight branch.
+
+Before you `git add` anything:
+
+1. `git branch --show-current` — if this doesn't match the scope of the
+   change (e.g., branch is `chore/drop-icons-and-vercel-docs` but you're
+   rewriting tokens), stop.
+2. If it doesn't match, cut a new branch from `origin/main`:
+   ```bash
+   git fetch origin main
+   git stash push -u -m "wip"       # if the tree is dirty
+   git checkout main && git merge --ff-only origin/main
+   git checkout -b <type>/<slug>    # e.g. feat/tokens-flat-palette
+   git stash pop                    # if you stashed
+   ```
+3. Branch name mirrors the commit type + a short slug: `feat/tokens-*`,
+   `fix/button-*`, `docs/*`, `chore/*`. `semantic-release` reads
+   Conventional Commit types on merge — it does *not* read branch names,
+   so single-scope branches are what keep the release graph coherent.
+
+If unsure whether the current branch is the right place for the work: ASK
+before committing. Rewriting a merged history is much more expensive than a
+one-line question.
+
 ## Commit convention
 
 We use **Conventional Commits**. Commit messages drive semver via
