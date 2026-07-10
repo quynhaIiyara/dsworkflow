@@ -18,7 +18,8 @@
     "check": "npm run typecheck && npm run build && npm run test",
     "commitlint": "commitlint",
     "release:snapshot": "./tools/release.sh true",
-    "release": "./tools/release.sh"
+    "release": "./tools/release.sh",
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.0",
