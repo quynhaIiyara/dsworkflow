@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 import { colors, spacing, radii, typography } from '@rn-ds/tokens';
 
-const DOT_SIZE = spacing.sm;
+const DOT_SIZE = spacing.s2;
 
 export const styles = StyleSheet.create({
   chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.xs,
+    gap: spacing.s1,
   },
 });
 
@@ -17,11 +17,11 @@ export const dotStyles = StyleSheet.create({
     height: DOT_SIZE,
     borderRadius: radii.pill,
   },
-  warning: { backgroundColor: colors.warning.solid },
-  success: { backgroundColor: colors.success.solid },
-  danger: { backgroundColor: colors.danger.solid },
-  neutral: { backgroundColor: colors.neutral.muted },
-  info: { backgroundColor: colors.info.solid },
+  warning: { backgroundColor: colors.amber },
+  success: { backgroundColor: colors.green },
+  danger: { backgroundColor: colors.red },
+  neutral: { backgroundColor: colors.inkMuted },
+  info: { backgroundColor: colors.blue },
 });
 
 export const labelStyles = StyleSheet.create({
@@ -31,9 +31,9 @@ export const labelStyles = StyleSheet.create({
     letterSpacing: 1,
     lineHeight: typography.size.sm,
   },
-  warning: { color: colors.warning.solid },
-  success: { color: colors.success.solid },
-  danger: { color: colors.danger.solid },
-  neutral: { color: colors.neutral.muted },
-  info: { color: colors.info.solid },
+  warning: { color: colors.amber },
+  success: { color: colors.green },
+  danger: { color: colors.red },
+  neutral: { color: colors.inkMuted },
+  info: { color: colors.blue },
 });

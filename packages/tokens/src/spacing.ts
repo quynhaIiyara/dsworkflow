@@ -1,10 +1,12 @@
 // AUTO-GENERATED from design-tokens.json — do not edit by hand.
 export const spacing = {
-  "none": 0,
-  "xs": 4,
-  "sm": 8,
-  "md": 16,
-  "lg": 24,
-  "xl": 32,
-  "xxl": 48
+  "s1": 4,
+  "s2": 8,
+  "s3": 12,
+  "s4": 16,
+  "s5": 20,
+  "s6": 24,
+  "s7": 32,
+  "s8": 40
 } as const;
+export type SpacingToken = keyof typeof spacing;

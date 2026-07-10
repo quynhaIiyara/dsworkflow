@@ -6,13 +6,12 @@ import { ColourSwatchGrid } from '../components/TokenSwatch';
 
 # Colour
 
-Semantic colour tokens. **Never hardcode hex values** — always import from
+Colour tokens. **Never hardcode hex values** — always import from
 `@rn-ds/tokens`.
 
-Colours are grouped semantically (`brand`, `neutral`, `danger`, `success`,
-`warning`, `info`) rather than by hue. Each group has a `solid` (the fill),
-an `onSolid` (foreground text/icon over it), and typically a `subtle`
-(low-contrast fill for backgrounds).
+The palette mixes surface/ink/hairline semantic keys with named hue keys
+(`green`, `red`, `amber`, `blue`, plus `*Pale`/`*Dark`/`*Text` shades) used
+across status, feedback, and brand accents.
 
 ## Usage
 
@@ -20,8 +19,8 @@ an `onSolid` (foreground text/icon over it), and typically a `subtle`
 import { colors } from '@rn-ds/tokens';
 import { View, Text } from 'react-native';
 
-<View style={{ backgroundColor: colors.brand.solid, padding: 12 }}>
-  <Text style={{ color: colors.brand.onSolid }}>Buy now</Text>
+<View style={{ backgroundColor: colors.blue, padding: 12 }}>
+  <Text style={{ color: colors.white }}>Buy now</Text>
 </View>
 ```
 

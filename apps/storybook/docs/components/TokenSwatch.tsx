@@ -28,30 +28,24 @@ const valueStyle: React.CSSProperties = {
 };
 
 // ── Colours ────────────────────────────────────────────────────────────────
-type ColourGroup = Record<string, Record<string, string>>;
+type ColourMap = Record<string, string>;
 
-export function ColourSwatchGrid({ tokens }: { tokens: ColourGroup }) {
-  const rows = Object.entries(tokens).flatMap(([group, values]) =>
-    Object.entries(values).map(([shade, hex]) => ({ group, shade, hex })),
-  );
-
+export function ColourSwatchGrid({ tokens }: { tokens: ColourMap }) {
   return (
     <div style={gridStyle}>
-      {rows.map(({ group, shade, hex }) => (
-        <div key={`${group}.${shade}`} style={cellStyle}>
+      {Object.entries(tokens).map(([name, value]) => (
+        <div key={name} style={cellStyle}>
           <div
             style={{
               height: 48,
-              background: hex,
+              background: value,
               borderRadius: 6,
               border: '1px solid #EEEEF2',
               marginBottom: 8,
             }}
           />
-          <div style={nameStyle}>
-            colors.{group}.{shade}
-          </div>
-          <div style={valueStyle}>{hex}</div>
+          <div style={nameStyle}>colors.{name}</div>
+          <div style={valueStyle}>{value}</div>
         </div>
       ))}
     </div>

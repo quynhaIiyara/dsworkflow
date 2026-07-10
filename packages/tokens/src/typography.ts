@@ -20,3 +20,4 @@ export const typography = {
     "relaxed": 1.6
   }
 } as const;
+export type TypographyToken = keyof typeof typography;
