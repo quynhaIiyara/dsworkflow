@@ -18,18 +18,57 @@ migration. Stay in RN.
 Given a natural-language request like *"add a Toast that slides in from the top
 with success/error variants"*, do this in order:
 
-1. **Read `AGENTS.md`** at the repo root. It has the current commit types +
+1. **Check the branch.** Run `git branch --show-current`. If the current
+   branch's scope doesn't match the work (e.g., you're on
+   `chore/drop-icons` but asked to rewrite tokens), STOP and propose a new
+   branch off `origin/main` before writing any code. See "Branch hygiene"
+   below.
+2. **Read `AGENTS.md`** at the repo root. It has the current commit types +
    scopes. If it disagrees with anything below, `AGENTS.md` wins.
-2. **Read the tokens** at `packages/tokens/src/design-tokens.json`. If the
+3. **Read the tokens** at `packages/tokens/src/design-tokens.json`. If the
    component needs a color/spacing/radius/font that doesn't exist, propose a
    token addition **as a separate step** — never inline a hex/px number.
-3. **Pick a reference component** from `packages/components/src/`. `Button/`
+4. **Pick a reference component** from `packages/components/src/`. `Button/`
    is the canonical example for interactive components. `Status/` is the
    canonical example for presentational chips.
-4. **Scaffold the component** using the file layout below.
-5. **Wire the barrel export** in `packages/components/src/index.ts`.
-6. **Draft the Conventional Commit** using the correct scope.
-7. **Show the diff to the user, ask for confirmation, then commit.**
+5. **Scaffold the component** using the file layout below.
+6. **Wire the barrel export** in `packages/components/src/index.ts`.
+7. **Draft the Conventional Commit** using the correct scope.
+8. **Show the diff to the user, ask for confirmation, then commit.**
+
+## Branch hygiene (do this before you touch files)
+
+Every unit of work lands on a branch whose name matches its scope. Do not
+stack unrelated work on top of an in-flight branch — reviewers and
+`semantic-release` (which infers per-package releases from commit paths on
+merge to `main`) both assume clean, single-purpose branches.
+
+Before staging any change:
+
+```bash
+git branch --show-current
+git status
+```
+
+If the current branch is `main` OR its name's scope prefix (`feat/foo`,
+`chore/bar`) does not match the scope of the requested change, cut a new
+branch **from `origin/main`**:
+
+```bash
+git fetch origin main
+git stash push -u -m "wip" 2>/dev/null   # only if the tree is dirty
+git checkout main && git merge --ff-only origin/main
+git checkout -b <type>/<short-slug>       # e.g. feat/tokens-flat-palette
+git stash pop 2>/dev/null                 # if you stashed above
+```
+
+Branch name = commit type + slug describing the work (`feat/tokens-flat-palette`,
+`fix/button-focus-ring`, `docs/color-swatches`). One branch = one PR = one
+merged surface area.
+
+If in doubt, ASK the user before continuing. Don't guess and commit onto the
+wrong branch — reverting a merge is much more expensive than a 20-second
+question.
 
 ## File layout (non-negotiable)
 
