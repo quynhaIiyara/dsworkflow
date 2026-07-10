@@ -1,3 +1,9 @@
+## [2.2.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.1.0...@rn-ds/components-v2.2.0) (2026-07-10)
+
+### Features
+
+* **components:** add Avatar, Badge, Banner, BottomSheet ([9c753f5](https://github.com/quynhaIiyara/dsworkflow/commit/9c753f5b8c3b7cedaa7304800256efac2de301c8))
+
 ## [2.1.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.0.0...@rn-ds/components-v2.1.0) (2026-07-10)
 
 ### Features
