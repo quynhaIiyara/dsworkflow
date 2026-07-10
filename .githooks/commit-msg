@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+# Enforce Conventional Commits (see AGENTS.md) at commit time.
+# CI runs the same check on PRs; this hook prevents you from ever pushing a
+# commit CI will reject.
+npx --no -- commitlint --edit "$1"
