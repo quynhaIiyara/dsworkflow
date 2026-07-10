@@ -1,0 +1,13 @@
+{
+  "name": "ds-manifest-mcp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/index.mjs",
+  "scripts": {
+    "start": "node src/index.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  }
+}

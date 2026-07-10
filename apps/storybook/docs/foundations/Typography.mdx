@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/blocks';
+import { typography } from '@rn-ds/tokens';
+import { TypeScaleTable } from '../components/TokenSwatch';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+Type scale + weights + line heights. Font family is inherited from the OS —
+we don't ship a custom font in the primitives package. If your app uses a
+custom font, register it once in your `App.tsx`.
+
+## Usage
+
+```tsx
+import { typography } from '@rn-ds/tokens';
+import { Text } from 'react-native';
+
+<Text style={{
+  fontSize: typography.size.lg,
+  fontWeight: typography.weight.semibold,
+  lineHeight: typography.size.lg * typography.lineHeight.normal,
+}}>
+  Order confirmed
+</Text>
+```
+
+## Size scale
+
+<TypeScaleTable tokens={typography.size} />
+
+## Weights
+
+Available: `regular` (400), `medium` (500), `semibold` (600), `bold` (700).
+
+## Line heights
+
+Available: `tight` (1.2), `normal` (1.4), `relaxed` (1.6). Multiply
+against the font size to compute the actual `lineHeight` value.

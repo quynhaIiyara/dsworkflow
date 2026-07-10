@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get Started/Agent access (MCP)" />
+
+# Agent access (MCP)
+
+The design system ships an **MCP server** (`ds-manifest`) that exposes
+component + token metadata to any MCP-capable client — most importantly,
+Claude Code running in your app repo.
+
+The MCP reads a `manifest.json` extracted by `react-docgen-typescript`
+from the TSX sources, so props / defaults / descriptions stay in sync
+with the code automatically.
+
+## Tools exposed
+
+| Tool               | Purpose                                                    |
+|--------------------|------------------------------------------------------------|
+| `list_components`  | Discover what components exist (name, description, path)   |
+| `get_component`    | Full metadata for a component (props, types, defaults)     |
+| `get_tokens`       | Full token tree (colours, spacing, radii, typography, opacity) |
+| `get_versions`     | Current version pin per package                            |
+
+## Register in Claude Code
+
+From the DS repo (dev):
+
+```bash
+claude mcp add ds-manifest \
+  --command "node" \
+  --args ".claude/mcp/ds-manifest/src/index.mjs" \
+  --env "DS_MANIFEST_PATH=$(pwd)/dist/manifest.json"
+```
+
+From a downstream app consuming a released version, point at the manifest
+attached to the GitHub Release:
+
+```bash
+export DS_MANIFEST_PATH=/path/to/downloaded/manifest.json
+claude mcp add ds-manifest --command "node" --args "/abs/path/index.mjs"
+```
+
+## Consumer skill (recommended)
+
+Pair the MCP with a `ds-consumer` skill in your app repo so Claude
+queries the MCP before generating JSX. Without the skill, Claude may
+still write markup — but with the skill, it will look up the current
+props before writing them, so prop names / variants / types stay accurate.

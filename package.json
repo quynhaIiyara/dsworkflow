@@ -1,0 +1,52 @@
+{
+  "name": "rn-ds",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    ".claude/mcp/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=@rn-ds/tokens && npm run build --workspace=@rn-ds/icons --if-present && npm run build --workspace=@rn-ds/components",
+    "typecheck": "npm run build --workspace=@rn-ds/tokens && npm run typecheck --workspaces --if-present",
+    "manifest": "node tools/gen-manifest.mjs",
+    "storybook": "npm run storybook --workspace=@rn-ds/docs",
+    "storybook:build": "npm run build --workspace=@rn-ds/docs",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "check": "npm run typecheck && npm run build && npm run test",
+    "commitlint": "commitlint",
+    "release:snapshot": "./tools/release.sh true",
+    "release": "./tools/release.sh"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "semantic-release": "^24.2.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "typescript": "^5.7.0",
+    "glob": "^11.0.0",
+    "react-docgen-typescript": "^2.2.2",
+    "prettier": "^3.4.0",
+    "storybook": "^8.6.0",
+    "@storybook/react": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@storybook/addon-essentials": "^8.6.0",
+    "vite": "^5.4.10",
+    "@vitejs/plugin-react": "^4.3.3",
+    "react-native-web": "^0.19.13",
+    "react-dom": "^18.3.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "npm@10.9.0",
+  "overrides": {
+    "react": "18.3.1",
+    "react-native": "0.76.9"
+  }
+}

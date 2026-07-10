@@ -1,0 +1,66 @@
+<!--
+  CSS overrides for the Storybook manager UI. Applied AFTER the theme so
+  these rules win. Kept in one file so future edits are easy to find.
+
+  Storybook's manager is styled with emotion + auto-generated class names,
+  so we lean on semantic data-attributes ([data-selected], [data-nodetype])
+  and structural selectors rather than class names that change per version.
+-->
+<style>
+  /* ─── Minimal sidebar: strip Storybook's per-item icons ─────────── */
+  a[data-selected] svg[height="14"],
+  a[data-selected] svg[width="14"],
+  [data-nodetype="document"] svg[height="14"],
+  [data-nodetype="story"] svg[height="14"],
+  [data-nodetype="component"] > button > svg[height="14"] {
+    display: none !important;
+  }
+
+  /* Hide sidebar bullet/leaf icons more aggressively — first svg inside any
+     link that starts with 'sidebar-item' or has a data-item-id attr. */
+  a[data-item-id] > svg:first-of-type {
+    display: none !important;
+  }
+
+  /* ─── Hide the "+" create-component button next to search ───────── */
+  button[aria-label*="Create"i],
+  button[title*="Create"i],
+  button[aria-label*="new story"i] {
+    display: none !important;
+  }
+
+  /* ─── Hide the filter button next to search ─────────────────────── */
+  button[aria-label*="Filter"i] {
+    display: none !important;
+  }
+
+  /* ─── Section root headings: no expand arrow, uppercase muted ───── */
+  [data-nodetype="root"] > button > svg,
+  button[aria-label*="Expand"i] > svg {
+    display: none !important;
+  }
+
+  /* ─── Selected item — soft green pill background matching mockup ── */
+  a[data-selected="true"] {
+    background: #EFF7E6 !important;
+    color: #3C7A1F !important;
+    border-radius: 6px !important;
+  }
+  a[data-selected="true"] * {
+    color: #3C7A1F !important;
+  }
+
+  /* ─── Subtle hover state ────────────────────────────────────────── */
+  a[data-item-id]:hover:not([data-selected="true"]) {
+    background: #F7F7FA !important;
+  }
+
+  /* ─── Section headings (GET STARTED / FOUNDATIONS / COMPONENTS) ── */
+  [data-nodetype="root"] > button {
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    letter-spacing: 0.08em !important;
+    color: #8A8A96 !important;
+    font-weight: 600 !important;
+  }
+</style>

@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+import { spacing } from '@rn-ds/tokens';
+import { ScaleSwatchGrid } from '../components/TokenSwatch';
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing
+
+Layout spacing scale (padding, gap, margin). Never use raw pixel values —
+import from `@rn-ds/tokens`.
+
+## Usage
+
+```tsx
+import { spacing } from '@rn-ds/tokens';
+import { View } from 'react-native';
+
+<View style={{ padding: spacing.md, gap: spacing.sm }}>{children}</View>
+```
+
+## Scale
+
+<ScaleSwatchGrid
+  tokens={spacing}
+  namespace="spacing"
+  render={(px) => (
+    <div style={{ width: px, height: 24, background: '#5B4CFF', borderRadius: 2 }} />
+  )}
+/>

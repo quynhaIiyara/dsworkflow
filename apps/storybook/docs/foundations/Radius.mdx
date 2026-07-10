@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks';
+import { radii } from '@rn-ds/tokens';
+import { ScaleSwatchGrid } from '../components/TokenSwatch';
+
+<Meta title="Foundations/Radius" />
+
+# Radius
+
+Border-radius scale. Use `pill` (999) for fully-rounded chips + dots.
+
+## Usage
+
+```tsx
+import { radii } from '@rn-ds/tokens';
+import { View } from 'react-native';
+
+<View style={{ borderRadius: radii.md }}>{children}</View>
+```
+
+## Scale
+
+<ScaleSwatchGrid
+  tokens={radii}
+  namespace="radii"
+  render={(px) => (
+    <div
+      style={{
+        width: 40,
+        height: 40,
+        background: '#5B4CFF',
+        borderRadius: Math.min(px, 20),
+      }}
+    />
+  )}
+/>

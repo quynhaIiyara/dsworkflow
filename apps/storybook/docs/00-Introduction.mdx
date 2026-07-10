@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get Started/Introduction" />
+
+# Introduction
+
+**rn-ds** is a React Native design system built for missionyff apps. It
+ships primitives + slot compositions, tokens, and icons — with a
+Claude-Code-native authoring surface and an ahua-style release pipeline
+(semantic-release + Conventional Commits, no Release PR).
+
+## Packages
+
+| Package             | Purpose                                                    |
+|---------------------|------------------------------------------------------------|
+| `@rn-ds/tokens`     | Design tokens (colours, spacing, radii, typography, opacity) |
+| `@rn-ds/components` | Presentational + interactive primitives (Button, Status …) |
+| `@rn-ds/icons`      | SVG → `react-native-svg` components via svgr codegen       |
+
+## Scope
+
+**In scope:** primitives, slot compositions, tokens, icons.
+
+**Out of scope:** framework-agnostic wrappers, web-only components,
+a11y automation in CI (soft-enforced in review — see AGENTS.md).
+
+## Authoring flow
+
+```
+Designer + Claude → npm run new:component → PR
+CI: typecheck + build + commitlint
+Merge to main → semantic-release publishes per-package tarballs
+```
+
+See **Installation** for how to consume, **Agent access (MCP)** for how
+Claude Code queries the manifest, **Versioning** for release semantics.

@@ -1,0 +1,22 @@
+{
+  "name": "@rn-ds/tokens",
+  "version": "0.0.0",
+  "description": "Design tokens (SSOT) for rn-ds. JSON → typed TS exports.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src/design-tokens.json"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepack": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

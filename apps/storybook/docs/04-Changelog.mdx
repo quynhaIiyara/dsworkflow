@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get Started/Changelog" />
+
+# Changelog
+
+Per-package changelogs are shipped inside each release tarball as
+`CHANGELOG.md`. `semantic-release` maintains them automatically on every
+merge to `main` that includes a semver-relevant commit.
+
+## Where to look
+
+| Package             | Location                                       |
+|---------------------|------------------------------------------------|
+| `@rn-ds/tokens`     | `packages/tokens/CHANGELOG.md` in the repo, or the release notes on the GitHub Release page |
+| `@rn-ds/components` | `packages/components/CHANGELOG.md`             |
+| `@rn-ds/icons`      | `packages/icons/CHANGELOG.md`                  |
+
+## Format
+
+Each entry is grouped by commit type:
+
+```markdown
+## [1.4.0](https://github.com/...) (2026-07-10)
+
+### Features
+
+* **components:** add Toast with variants + auto-dismiss ([abc1234](https://...))
+
+### Bug Fixes
+
+* **components:** correct disabled opacity on Button ghost variant ([def5678](https://...))
+```
+
+## Aggregate view
+
+An aggregate view across all packages will land here after the first real
+release. For now, check each package's `CHANGELOG.md` directly.

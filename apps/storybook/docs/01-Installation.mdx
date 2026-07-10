@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get Started/Installation" />
+
+# Installation
+
+Install the three packages you need. Peer deps: React 18+, React Native 0.72+,
+`react-native-svg` (if you use icons).
+
+## From GitHub Release tarball (current default)
+
+Grab the `.tgz` assets from the latest release and install directly:
+
+```bash
+npm install \
+  https://github.com/quynhaliyara/rn-ds/releases/download/@rn-ds/components-v0.1.0/rn-ds-components-0.1.0.tgz \
+  https://github.com/quynhaliyara/rn-ds/releases/download/@rn-ds/tokens-v0.1.0/rn-ds-tokens-0.1.0.tgz \
+  https://github.com/quynhaliyara/rn-ds/releases/download/@rn-ds/icons-v0.1.0/rn-ds-icons-0.1.0.tgz \
+  react-native-svg
+```
+
+Each package versions independently — tag names embed the package name so
+you can pin `@rn-ds/tokens@0.2.0` while staying on `@rn-ds/components@0.1.0`.
+
+## Snapshot / preview builds
+
+Use snapshots for WIP consumption:
+
+```bash
+gh workflow run release.yaml -f publish_snapshot=true
+```
+
+CI attaches `0.0.0-<sha>.tgz` artifacts to the workflow run.
+
+## Basic usage
+
+```tsx
+import { Button, Status } from '@rn-ds/components';
+import { colors, spacing } from '@rn-ds/tokens';
+
+export function OrderRow() {
+  return (
+    <View style={{ flexDirection: 'row', gap: spacing.md }}>
+      <Status variant="confirmed" label="Confirmed" />
+      <Button label="View" variant="primary" onPress={() => {}} />
+    </View>
+  );
+}
+```

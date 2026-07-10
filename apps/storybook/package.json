@@ -1,0 +1,21 @@
+{
+  "name": "@rn-ds/docs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --config-dir ./.storybook",
+    "build": "storybook build -o ./storybook-static --config-dir ./.storybook",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@rn-ds/components": "*",
+    "@rn-ds/tokens": "*",
+    "react": "18.3.1",
+    "react-dom": "^18.3.1",
+    "react-native-web": "^0.19.13"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0"
+  }
+}
