@@ -1,3 +1,15 @@
+## [2.1.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.0.0...@rn-ds/components-v2.1.0) (2026-07-10)
+
+### Features
+
+* **components:** add compound Table with striped/size variants ([787f94f](https://github.com/quynhaIiyara/dsworkflow/commit/787f94f2db2c8f18ea2a32547f1f1edad7b898f5))
+* **docs:** render live CHANGELOG.md on docs, untrack storybook-static ([e449c7a](https://github.com/quynhaIiyara/dsworkflow/commit/e449c7ab887432c45c920f64f7b77b33653470e5))
+
+### Bug Fixes
+
+* **ci:** unblock release commits + fail loud on semrel errors ([c6cb4c0](https://github.com/quynhaIiyara/dsworkflow/commit/c6cb4c0e405a6f4e8e2d519c736625d35a113380))
+* **components:** use green for Button primary + ghost variants ([83d2f04](https://github.com/quynhaIiyara/dsworkflow/commit/83d2f04accb6e3e9da7ebf10f4e9be4c9b5bafa6))
+
 ## [2.0.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v1.0.0...@rn-ds/components-v2.0.0) (2026-07-10)
 
 ### ⚠ BREAKING CHANGES
