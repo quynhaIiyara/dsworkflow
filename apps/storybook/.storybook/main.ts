@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
   stories: [
@@ -6,7 +7,23 @@ const config: StorybookConfig = {
     '../../../packages/components/src/**/*.stories.@(ts|tsx|mdx)',
   ],
   addons: [
-    '@storybook/addon-essentials',
+    // Disable the docs addon that ships bundled with essentials so we can
+    // re-add addon-docs below with remark-gfm enabled — otherwise MDX pipe
+    // tables render as raw text.
+    {
+      name: '@storybook/addon-essentials',
+      options: { docs: false },
+    },
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
   ],
   framework: {
     name: '@storybook/react-vite',
