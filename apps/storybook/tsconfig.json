@@ -4,6 +4,8 @@
     "jsx": "react-jsx",
     "moduleResolution": "Bundler",
     "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
     "lib": ["ES2022", "DOM"]
   },
   "include": [".storybook/**/*", "../../packages/components/src/**/*.stories.tsx"]
