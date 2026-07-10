@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ds-manifest": {
+      "command": "node",
+      "args": [".claude/mcp/ds-manifest/src/index.mjs"]
+    }
+  }
+}

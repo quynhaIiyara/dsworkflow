@@ -83,6 +83,18 @@ RN a11y automation is skipped in CI. But every interactive component MUST
 accept and forward `accessibilityLabel` (and `accessibilityHint` where
 useful). This is a code-review checklist item, not a CI rule.
 
+## Two skills, one MCP
+
+- **`ds-authoring`** (`.claude/skills/ds-authoring/`) — activate when
+  editing this repo. Enforces the rules above at scaffolding time.
+- **`ds-consumer`** (`.claude/skills/ds-consumer/`) — copy into a downstream
+  RN app's `.claude/skills/`. Teaches Claude to query the manifest MCP
+  before writing markup that consumes `@rn-ds/*`.
+- **`ds-manifest` MCP** (`.claude/mcp/ds-manifest/`) — auto-registered here
+  via `.claude/settings.json`. Exposes `list_components`, `get_component`,
+  `get_tokens`, `get_versions`. Reads `dist/manifest.json` (dev) or
+  `./node_modules/@rn-ds/components/manifest.json` (downstream).
+
 ## Release mechanics
 
 - **Merge to `main`** → semantic-release runs per package.

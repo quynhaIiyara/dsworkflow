@@ -132,6 +132,48 @@ update stuff           (freeform — commitlint will reject)
 - When done, draft the PR title/body in plain English AND the Conventional
   Commit line. Let them copy-paste either.
 
+## Porting from the legacy HTML/CSS design system
+
+If the user asks to port a component from the sibling repo
+`../designworkflow/` (Web Components: `index.html` + `style.css` + `README.md`
+per component), follow this path:
+
+1. **Read the source** — `../designworkflow/components/<Name>/index.html`,
+   `style.css`, and `README.md` (if present). The HTML gives you the DOM
+   structure and slot names. The CSS gives you variant selectors (usually
+   `:host([variant="foo"])`) and token references (`var(--ds-color-...)`).
+
+2. **Map CSS custom properties → tokens.** Legacy tokens are
+   `--ds-color-*`, `--ds-space-*`, `--ds-radius-*`, `--ds-font-*`.
+   Cross-reference against `packages/tokens/src/design-tokens.json` to find
+   the equivalent. If nothing matches, propose a token addition FIRST as a
+   separate `feat(tokens):` commit — do not inline a hex.
+
+3. **Translate HTML slots → RN patterns.** `<slot>` becomes `children` or a
+   named prop. `<slot name="foo">` becomes a named prop (`foo: ReactNode`) OR
+   a compound subcomponent (`Card.Header`). Prefer subcomponents when the
+   consumer would nest more than a single child.
+
+4. **Translate CSS variants → discriminated string unions.**
+   `:host([variant="danger"])` in CSS becomes `variant: 'danger' | ...` in
+   the TS prop union, then a `variant_danger` key in `<Name>.styles.ts`.
+
+5. **Drop web-only concerns.** `letter-spacing` on RN Text is fine.
+   `text-transform: uppercase` isn't a style prop in RN — call
+   `label.toUpperCase()` in the JSX instead (see `Status.tsx` for the
+   pattern). `line-height` is a number in RN (usually `fontSize * ratio`).
+   Ignore `:hover`, `:focus-visible`, `cursor:` — those don't exist in RN.
+   Use `Pressable`'s `pressed`/`hovered` state instead.
+
+6. **Draft the commit** as `feat(components): port <Name> from legacy DS`.
+   In the body, note which legacy variants map to which RN variants, and any
+   simplifications made.
+
+Reference example: `Status.tsx` in this repo was ported from
+`../designworkflow/components/Status/`. Compare the two files to see the
+patterns above applied end-to-end (8 legacy variants collapsed into 5 RN
+tones via a `variantToTone` map).
+
 ## Escape hatches
 
 - **Behavior that RN's built-in components can't express** (focus trap, gesture

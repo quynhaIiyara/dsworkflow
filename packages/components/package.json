@@ -21,7 +21,8 @@
   },
   "files": [
     "src",
-    "lib"
+    "lib",
+    "manifest.json"
   ],
   "scripts": {
     "build": "bob build",

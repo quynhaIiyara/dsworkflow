@@ -66,10 +66,21 @@ const manifest = {
 };
 
 // ── Emit ──────────────────────────────────────────────────────────────────
-const outDir = join(root, 'dist');
-mkdirSync(outDir, { recursive: true });
-writeFileSync(join(outDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+// Two copies:
+//   1. dist/manifest.json — repo-local, consumed by the ds-manifest MCP in
+//      dev + attached to the GitHub Release for standalone consumers.
+//   2. packages/components/manifest.json — ships in the tarball so downstream
+//      apps can register the MCP with a path inside node_modules.
+const distDir = join(root, 'dist');
+const componentsDir = join(root, 'packages/components');
+mkdirSync(distDir, { recursive: true });
+
+const body = JSON.stringify(manifest, null, 2);
+writeFileSync(join(distDir, 'manifest.json'), body);
+writeFileSync(join(componentsDir, 'manifest.json'), body);
 
 console.log(
-  `manifest: ${components.length} components, ${Object.keys(tokens).length} token groups → dist/manifest.json`,
+  `manifest: ${components.length} components, ${Object.keys(tokens).length} token groups`,
 );
+console.log(`         → dist/manifest.json`);
+console.log(`         → packages/components/manifest.json (ships in tarball)`);
