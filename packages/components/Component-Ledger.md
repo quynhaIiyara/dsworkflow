@@ -62,7 +62,7 @@ file is the RN change log.
 | EmptyState  | Built | Not started | default                                 | Icon, one line, optional action. Illustration slot filled by downstream app.                             |
 | Skeleton    | Built | Not started | default                                 | Loading placeholder.                                                                                     |
 | SearchField | Built | Not started | default / results / clear               | Result count + clear control.                                                                            |
-| StatusChip  | Built | Done (as Status, rename pending) | 7 fixed statuses      | Confirmed, In progress, Rejected, Cancelled, Auto-cancelled, Completed, Partially completed. Currently exported as `Status`; breaking rename to `StatusChip` planned. |
+| StatusChip  | Built | Done        | 7 fixed statuses                        | Confirmed, In progress, Rejected, Cancelled, Auto-cancelled, Completed, Partially completed. Colour tone locked per `design.md`: green / blue / red / red / red / neutral / amber. |
 
 ## Foundations
 

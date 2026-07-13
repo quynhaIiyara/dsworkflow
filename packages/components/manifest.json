@@ -1,14 +1,76 @@
 {
-  "generatedAt": "2026-07-10T14:12:52.398Z",
+  "generatedAt": "2026-07-13T06:41:14.763Z",
   "versions": {
     "tokens": "0.0.0",
     "components": "0.0.0"
   },
   "components": [
     {
-      "name": "Status",
+      "name": "Table.Header",
       "description": null,
-      "path": "packages/components/src/Status/Status.tsx",
+      "path": "packages/components/src/Table/Table.tsx",
+      "props": []
+    },
+    {
+      "name": "Table.Row",
+      "description": null,
+      "path": "packages/components/src/Table/Table.tsx",
+      "props": [
+        {
+          "name": "_striped",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Internal — set by `Table` when `variant='striped'`. Do not pass directly."
+        }
+      ]
+    },
+    {
+      "name": "Table.Cell",
+      "description": null,
+      "path": "packages/components/src/Table/Table.tsx",
+      "props": [
+        {
+          "name": "align",
+          "type": "enum",
+          "required": false,
+          "defaultValue": "left",
+          "description": null
+        },
+        {
+          "name": "flex",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": "Relative width vs. sibling cells. Defaults to 1."
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "description": null,
+      "path": "packages/components/src/Table/Table.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "defaultValue": "default",
+          "description": null
+        },
+        {
+          "name": "size",
+          "type": "enum",
+          "required": false,
+          "defaultValue": "md",
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "StatusChip",
+      "description": null,
+      "path": "packages/components/src/StatusChip/StatusChip.tsx",
       "props": [
         {
           "name": "variant",
@@ -32,6 +94,50 @@
           "description": null
         }
       ]
+    },
+    {
+      "name": "Card.Header",
+      "description": null,
+      "path": "packages/components/src/Card/Card.tsx",
+      "props": []
+    },
+    {
+      "name": "Card.Eyebrow",
+      "description": null,
+      "path": "packages/components/src/Card/Card.tsx",
+      "props": []
+    },
+    {
+      "name": "Card.Title",
+      "description": null,
+      "path": "packages/components/src/Card/Card.tsx",
+      "props": []
+    },
+    {
+      "name": "Card.Row",
+      "description": null,
+      "path": "packages/components/src/Card/Card.tsx",
+      "props": [
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional leading icon element. rn-ds ships no Icon component."
+        }
+      ]
+    },
+    {
+      "name": "Card.Divider",
+      "description": null,
+      "path": "packages/components/src/Card/Card.tsx",
+      "props": []
+    },
+    {
+      "name": "Card",
+      "description": null,
+      "path": "packages/components/src/Card/Card.tsx",
+      "props": []
     },
     {
       "name": "Button",
@@ -60,59 +166,210 @@
           "description": null
         }
       ]
+    },
+    {
+      "name": "BottomSheet",
+      "description": null,
+      "path": "packages/components/src/BottomSheet/BottomSheet.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "Banner",
+      "description": null,
+      "path": "packages/components/src/Banner/Banner.tsx",
+      "props": [
+        {
+          "name": "tone",
+          "type": "enum",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional leading icon slot. rn-ds ships no Icon component; consumers pass\ntheir own element (any icon library) or omit for a text-only banner."
+        },
+        {
+          "name": "onDismiss",
+          "type": "() => void",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "dismissible",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "Badge",
+      "description": null,
+      "path": "packages/components/src/Badge/Badge.tsx",
+      "props": [
+        {
+          "name": "count",
+          "type": "number",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "tone",
+          "type": "enum",
+          "required": false,
+          "defaultValue": "urgent",
+          "description": null
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "99",
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "Avatar",
+      "description": null,
+      "path": "packages/components/src/Avatar/Avatar.tsx",
+      "props": [
+        {
+          "name": "initials",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "defaultValue": "46",
+          "description": null
+        },
+        {
+          "name": "onPress",
+          "type": "() => void",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
     }
   ],
   "tokens": {
     "colors": {
-      "brand": {
-        "solid": "#5B4CFF",
-        "onSolid": "#FFFFFF",
-        "subtle": "#EEEBFF"
-      },
-      "neutral": {
-        "background": "#FFFFFF",
-        "surface": "#F7F7FA",
-        "subtle": "#EEEEF2",
-        "muted": "#8A8A96",
-        "strong": "#1A1A22",
-        "onStrong": "#FFFFFF"
-      },
-      "danger": {
-        "solid": "#E24C4B",
-        "onSolid": "#FFFFFF",
-        "subtle": "#FCE9E8"
-      },
-      "success": {
-        "solid": "#2ECC71",
-        "onSolid": "#FFFFFF",
-        "subtle": "#E5F7EE"
-      },
-      "warning": {
-        "solid": "#F5A524",
-        "onSolid": "#1A1A22",
-        "subtle": "#FCF1DC"
-      },
-      "info": {
-        "solid": "#2196F3",
-        "onSolid": "#FFFFFF",
-        "subtle": "#E3F2FD"
-      }
+      "surface": "#F3F4F6",
+      "card": "#FFFFFF",
+      "ink": "#111827",
+      "inkBody": "#4B5563",
+      "inkMuted": "#6B7280",
+      "inkPlaceholder": "#9CA3AF",
+      "hairline": "#E5E7EB",
+      "green": "#699900",
+      "greenDark": "#4D7000",
+      "greenPale": "#EEF4D8",
+      "greenLight": "#DCEDB6",
+      "red": "#DC2626",
+      "redPale": "#FEE2E2",
+      "redText": "#B91C1C",
+      "amber": "#F59E0B",
+      "amberPale": "#FEF3C7",
+      "amberText": "#92400E",
+      "blue": "#0056B8",
+      "blueDark": "#003D8F",
+      "bluePale": "#DBE5F0",
+      "blueWash": "#EEF3FB",
+      "white": "#FFFFFF",
+      "scrim": "rgba(17,24,39,0.55)",
+      "toastBg": "#111827"
     },
     "spacing": {
-      "none": 0,
-      "xs": 4,
-      "sm": 8,
-      "md": 16,
-      "lg": 24,
-      "xl": 32,
-      "xxl": 48
+      "s1": 4,
+      "s2": 8,
+      "s3": 12,
+      "s4": 16,
+      "s5": 20,
+      "s6": 24,
+      "s7": 32,
+      "s8": 40
     },
     "radii": {
-      "none": 0,
-      "sm": 4,
-      "md": 8,
-      "lg": 16,
+      "chip": 6,
+      "btn": 8,
+      "card": 16,
+      "sheet": 20,
       "pill": 999
+    },
+    "shadow": {
+      "soft": {
+        "shadowColor": "#111827",
+        "shadowOffset": {
+          "width": 0,
+          "height": 1
+        },
+        "shadowOpacity": 0.06,
+        "shadowRadius": 3,
+        "elevation": 2
+      }
     },
     "typography": {
       "size": {
@@ -133,6 +390,64 @@
         "tight": 1.2,
         "normal": 1.4,
         "relaxed": 1.6
+      },
+      "role": {
+        "headline": {
+          "fontSize": 26,
+          "lineHeight": 32,
+          "fontWeight": "700",
+          "letterSpacing": -0.52
+        },
+        "title": {
+          "fontSize": 22,
+          "lineHeight": 28,
+          "fontWeight": "700",
+          "letterSpacing": -0.22
+        },
+        "section": {
+          "fontSize": 15,
+          "lineHeight": 20,
+          "fontWeight": "700",
+          "letterSpacing": -0.15
+        },
+        "subtitle": {
+          "fontSize": 15,
+          "lineHeight": 20,
+          "fontWeight": "600"
+        },
+        "body": {
+          "fontSize": 14,
+          "lineHeight": 20,
+          "fontWeight": "500"
+        },
+        "label": {
+          "fontSize": 13,
+          "lineHeight": 16,
+          "fontWeight": "400"
+        },
+        "caption": {
+          "fontSize": 12,
+          "lineHeight": 16,
+          "fontWeight": "500",
+          "letterSpacing": 0.72
+        },
+        "tab": {
+          "fontSize": 11,
+          "lineHeight": 14,
+          "fontWeight": "500"
+        },
+        "eyebrow": {
+          "fontSize": 10,
+          "lineHeight": 14,
+          "fontWeight": "600",
+          "letterSpacing": 0.8,
+          "textTransform": "uppercase"
+        },
+        "cta": {
+          "fontSize": 15,
+          "lineHeight": 18,
+          "fontWeight": "700"
+        }
       }
     },
     "opacity": {
