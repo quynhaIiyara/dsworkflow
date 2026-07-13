@@ -1,3 +1,9 @@
+## [3.1.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.0.0...@rn-ds/components-v3.1.0) (2026-07-13)
+
+### Features
+
+* **components:** add Row primitive, alias Card.Row to it ([5b333b0](https://github.com/quynhaIiyara/dsworkflow/commit/5b333b0f7ff0c833913eb8d590c153f5877a25c2))
+
 ## [3.0.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.4.0...@rn-ds/components-v3.0.0) (2026-07-13)
 
 ### ⚠ BREAKING CHANGES
