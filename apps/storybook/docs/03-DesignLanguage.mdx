@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get Started/Design language" />
+
+# Design language
+
+Distilled from
+[`yara-atom-field-force/design/design.md`](https://github.com/yara-atom-field-force)
+— the FieldForce app team's canonical spec. This page carries the parts a
+component consumer needs (why the accent rule exists, what not to ship, how
+errors surface). Screen-level composition, illustrations, and mock-data canon
+stay in the upstream file.
+
+If a rule below drifts from `design.md`, `design.md` wins. Raise a PR here.
+
+## The accent rule
+
+Two colours carry meaning. Everything else is ink and surface.
+
+- **Green `#699900` is the primary accent.** It marks actions and interactions
+  the agronomist owns: the primary CTA, `Start service`, text links, the
+  active tab, the active day, the selected state.
+- **Blue `#0056B8` is the second accent, and it is narrow.** It marks
+  system-owned moments only: the in-progress state of a running service (its
+  chip, its card wash, its elapsed timer) and the `Complete` action that
+  finalises the service.
+- Green starts a service; blue is the system running it and finalising it.
+  **Nothing else is blue** — not links, not decoration, not a generic
+  highlight.
+
+One filled green action per screen is the anchor and leads the eye. Links and
+selected states are green too, but quieter (green text, a `green-pale` wash),
+so the filled action still wins.
+
+Red and amber are **semantic urgency only**, not brand. Red is time-window
+risk; amber is unknown or first touch (and carries the "service incomplete"
+state).
+
+### Status chip colours
+
+`StatusChip` colour is locked to the PRD status model — do not add variants
+or recolour.
+
+| Status              | Tone     |
+|---------------------|----------|
+| Confirmed           | green    |
+| In progress         | blue     |
+| Completed           | neutral  |
+| Rejected            | red      |
+| Cancelled           | red      |
+| Auto-cancelled      | red      |
+| Partially completed | amber    |
+
+## Anti-patterns
+
+Do not ship a screen with:
+
+- A **coloured card edge** on any side to mark a category. Use an eyebrow
+  with an 8px dot instead — dot colour is the only colour on the card
+  (green for opportunity or signal, amber for risk, red for critical).
+- **More than one accent stacked on one element** (tint plus border plus
+  icon-circle). Pick one.
+- A **second shadow**, or Material elevation. The DS ships one soft shadow.
+- **Gradients, sparkles, rainbow-numbered lists, or emoji used as icons.**
+- A **hero that is a gradient plus emoji plus a three-feature grid.** Lead
+  with a stat or a line.
+
+The self-test: *would Stripe or Linear ship this?* If no, simplify.
+
+## Copy
+
+Plain writing. Short sentences, one idea each.
+
+- **No em-dashes.**
+- **No inflated words** (`leverage`, `robust`, `seamless`, `comprehensive`,
+  `navigate`, `crucial`).
+- **No line that announces what a section is.** Just show the section.
+- Write "Section 4", never the section symbol (`§`).
+- Do not flag copy in the screen — no `placeholder`, no `sample text`, no
+  `Legal/DP dependency` labels on the mock. Write the real string as if it
+  were final. Open questions live in the tracker, never on the screen.
+
+## Errors
+
+One error surface: a toast at the bottom, with a single exception.
+
+**Field error (the one exception).** A red helper line under the field,
+with a small `alert-triangle` icon, in `red-text`. It replaces the field's
+normal helper while the error holds, because it belongs to that field.
+`Input` and `Textarea` render this automatically when you set `error`.
+
+**Everything else is a toast at the bottom.** A sign-in that fails, an
+account that is not authorised, a dropped network. One treatment, one
+place. The only difference is how long it stays:
+
+- A **blocking** error (for example "Your account is not authorised. Please
+  contact your administrator.") stays long enough to read — around six
+  seconds or until tapped. Pass `autoHideMs={6000}` on `Toast`.
+- A **transient, retryable** one (for example "Unable to sign in. Please
+  try again.") auto-dismisses in three or four seconds — `autoHideMs`
+  defaults to `4000`.
+
+Toasts have one style, always. **Dark ink pill, white text, pinned to the
+bottom, at most one text action** (for example "Retry") in a light tint. Do
+not colour a toast by type. **A toast is never red and never green:** the
+copy carries the meaning. This holds for a success toast ("Saved") as much
+as for an error one.
+
+Top placement is for a persistent system banner (offline, a new version) —
+that is `Banner`, not `Toast`. Different component, different rules.
