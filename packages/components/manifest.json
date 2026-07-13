@@ -1,10 +1,24 @@
 {
-  "generatedAt": "2026-07-13T07:16:00.592Z",
+  "generatedAt": "2026-07-13T07:25:46.148Z",
   "versions": {
     "tokens": "0.0.0",
     "components": "0.0.0"
   },
   "components": [
+    {
+      "name": "Text",
+      "description": null,
+      "path": "packages/components/src/Text/Text.tsx",
+      "props": [
+        {
+          "name": "color",
+          "type": "enum",
+          "required": false,
+          "defaultValue": null,
+          "description": "Colour token override. Defaults per role (headline/title/section/subtitle/cta → ink, body/tab → inkBody, label/caption/eyebrow → inkMuted)."
+        }
+      ]
+    },
     {
       "name": "Table.Header",
       "description": null,
@@ -113,6 +127,76 @@
           "required": false,
           "defaultValue": null,
           "description": "When set, the row renders as a `Pressable` with a pressed opacity state."
+        }
+      ]
+    },
+    {
+      "name": "IconButton",
+      "description": null,
+      "path": "packages/components/src/IconButton/IconButton.tsx",
+      "props": [
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": true,
+          "defaultValue": null,
+          "description": "Icon element. Consumer supplies (rn-ds ships no Icon primitive). Draw with `stroke=\"currentColor\"` and colour the parent via a token."
+        },
+        {
+          "name": "onPress",
+          "type": "(event: GestureResponderEvent) => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "Chip",
+      "description": null,
+      "path": "packages/components/src/Chip/Chip.tsx",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "selected",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "Selected state — filled with `green-pale`, green border, `greenDark` label."
+        },
+        {
+          "name": "onPress",
+          "type": "(event: GestureResponderEvent) => void",
+          "required": false,
+          "defaultValue": null,
+          "description": "Toggle the whole chip. Omit to make the chip non-interactive."
+        },
+        {
+          "name": "onRemove",
+          "type": "() => void",
+          "required": false,
+          "defaultValue": null,
+          "description": "When set, renders the chip in \"removable\" mode with a trailing close affordance."
+        },
+        {
+          "name": "removeIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional custom remove icon. Falls back to a \"×\" glyph (U+00D7)."
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
         }
       ]
     },

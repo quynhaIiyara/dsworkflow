@@ -41,12 +41,12 @@ file is the RN change log.
 | Component   | HTML  | RN          | States                                  | Notes                                                                                                    |
 |-------------|-------|-------------|-----------------------------------------|----------------------------------------------------------------------------------------------------------|
 | Button      | Built | Done        | green / blue / neutral / destructive    | Tone encodes meaning: green = SA acts, blue = system finalises. 8px radius, not pill.                    |
-| IconButton  | Built | Not started | default / pressed                       | Call, message, map, 3-dot trigger.                                                                       |
-| Text        | Built | Not started | full type scale                         | Consumes `typography.role.*` from `@rn-ds/tokens`.                                                       |
+| IconButton  | Built | Done        | default / pressed                       | Call, message, map, 3-dot trigger. Consumer supplies the icon element; 44×44 hit target.                 |
+| Text        | Built | Done        | full type scale                         | Consumes `typography.role.*` from `@rn-ds/tokens`. Colour defaults per role, overrideable via colour token. |
 | Card        | Built | Done        | default                                 | White surface, no coloured edges. `Card.Row` is an alias for the standalone `Row` primitive.             |
 | Row         | Built | Done        | default / pressed                       | Single list row. Optional leading icon slot. Pass `onPress` to render as `Pressable`.                    |
 | Badge       | Built | Done        | count / label                           |                                                                                                          |
-| Chip        | Built | Not started | selectable / removable                  | Filter chips, brand chips.                                                                               |
+| Chip        | Built | Done        | selectable / removable                  | Filter chips, brand chips. Selected state = `green-pale` wash + green border.                            |
 | Input       | Built | Not started | default / focus / error                 | Kit input is white + hairline + green focus ring.                                                        |
 | Textarea    | Built | Not started | default / limit reached                 | Char limits: observations 1000, advisory 500.                                                            |
 | ChoiceList  | Built | Not started | single-choice                           | Flat hairline rows, leading 22px radio filling green when selected.                                      |
