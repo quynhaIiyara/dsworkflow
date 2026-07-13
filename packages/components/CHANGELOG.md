@@ -1,3 +1,9 @@
+## [3.5.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.4.0...@rn-ds/components-v3.5.0) (2026-07-13)
+
+### Features
+
+* **components:** add Dialog, Toast, EmptyState, Skeleton primitives ([ac7212f](https://github.com/quynhaIiyara/dsworkflow/commit/ac7212fdb84fa2299dc105888a6d5dc892ae1585))
+
 ## [3.4.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.3.0...@rn-ds/components-v3.4.0) (2026-07-13)
 
 ### Features
