@@ -1,3 +1,13 @@
+## [3.2.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.1.0...@rn-ds/components-v3.2.0) (2026-07-13)
+
+### Features
+
+* **components:** add Text, IconButton, Chip primitives ([7b92c71](https://github.com/quynhaIiyara/dsworkflow/commit/7b92c719bb15fd69f17627d7e35e0bd643b1b558))
+
+### Bug Fixes
+
+* **components:** omit RN's native role prop from TextProps ([f421904](https://github.com/quynhaIiyara/dsworkflow/commit/f4219049f59ee17e5ae813ea3fe3085628d46695))
+
 ## [3.1.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.0.0...@rn-ds/components-v3.1.0) (2026-07-13)
 
 ### Features
