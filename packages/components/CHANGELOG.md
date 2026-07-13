@@ -1,3 +1,30 @@
+## [3.0.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.4.0...@rn-ds/components-v3.0.0) (2026-07-13)
+
+### ⚠ BREAKING CHANGES
+
+* **components:** `Status`, `StatusProps`, and `StatusVariant` exports are
+removed. Replace with `StatusChip`, `StatusChipProps`, and
+`StatusChipVariant`. The variants `pending`, `service-incomplete`, and
+`overdue` are dropped — migrate to the ledger's seven (most likely
+`confirmed` for `pending`, `partially-completed` for `service-incomplete`,
+and `rejected` or `partially-completed` for `overdue`, depending on the
+booking's actual PRD state).
+
+## Migration
+
+```diff
+- import { Status } from '@rn-ds/components';
+- <Status variant="pending" label="Pending" />
++ import { StatusChip } from '@rn-ds/components';
++ <StatusChip variant="confirmed" label="Confirmed" />
+```
+
+Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>
+
+### Features
+
+* **components:** rename Status to StatusChip with seven fixed variants ([ccb5806](https://github.com/quynhaIiyara/dsworkflow/commit/ccb5806130858a6eb9b829e4fcf1d108f306e996))
+
 ## [2.4.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.3.1...@rn-ds/components-v2.4.0) (2026-07-13)
 
 ### Features
