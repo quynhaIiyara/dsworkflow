@@ -1,3 +1,9 @@
+## [3.3.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.2.0...@rn-ds/components-v3.3.0) (2026-07-13)
+
+### Features
+
+* **components:** add Input, Textarea, SearchField, Checkbox, ChoiceList, Stepper ([4806786](https://github.com/quynhaIiyara/dsworkflow/commit/480678664ed03053a1f11b17128ed7ebabb71560))
+
 ## [3.2.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.1.0...@rn-ds/components-v3.2.0) (2026-07-13)
 
 ### Features
