@@ -53,14 +53,14 @@ file is the RN change log.
 | Checkbox    | Built | Done        | on / off                                | Consent toggle on login. Green fill when checked; optional string or ReactNode label.                    |
 | Stepper     | Built | Done        | default / min / max                     | Quantity in bags. Optional `format` prop for value display.                                              |
 | BottomSheet | Built | Done        | open / closed                           | Quick actions, short choices.                                                                            |
-| Dialog      | Built | Not started | two-button confirm                      | Accept, reject, start, complete, log out.                                                                |
+| Dialog      | Built | Done        | two-button confirm                      | Accept, reject, start, complete, log out. Green primary by default, red `destructive` variant, pass `cancelLabel={null}` for a single-button ack. |
 | Tabs        | Built | Done        | segmented + subtabs                     | Two variants: `segmented` (hairline background + white raised segment for active) and `pills` (ink pill for active). |
 | TabBar      | Built | Done        | 4 tabs, active state                    | Home, Schedules, Requests, History. Active tab in green. Consumer supplies icons; optional numeric badge.|
 | Calendar    | Built | Done        | disabled / coloured days                | Month grid. Today ring + selected fill + optional `markedDates` dot. Prev/next when `onMonthChange` is set.|
 | Banner      | Built | Done        | offline / permission / helper           | Placement encodes severity.                                                                              |
-| Toast       | Built | Not started | neutral dark, bottom                    | Never colour-coded.                                                                                      |
-| EmptyState  | Built | Not started | default                                 | Icon, one line, optional action. Illustration slot filled by downstream app.                             |
-| Skeleton    | Built | Not started | default                                 | Loading placeholder.                                                                                     |
+| Toast       | Built | Done        | neutral dark, bottom                    | Dark ink pill, white text, at most one text action. Never colour-coded — copy carries the meaning. Auto-dismiss configurable (4s default, ~6s blocking, `null` for tap-only). |
+| EmptyState  | Built | Done        | default                                 | Illustration → title → line → one action. Consumer supplies illustration; falls back to the dashed placeholder block per `design.md`. |
+| Skeleton    | Built | Done        | default                                 | Loading placeholder. Subtle opacity pulse; `animate={false}` for reduced motion. Sibling `SkeletonText` renders a stacked paragraph shape. |
 | SearchField | Built | Done        | default / results / clear               | Composes `Input` with a leading search icon slot, a trailing clear affordance, and an optional result count meta line. |
 | StatusChip  | Built | Done        | 7 fixed statuses                        | Confirmed, In progress, Rejected, Cancelled, Auto-cancelled, Completed, Partially completed. Colour tone locked per `design.md`: green / blue / red / red / red / neutral / amber. |
 
