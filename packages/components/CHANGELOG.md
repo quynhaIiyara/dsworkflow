@@ -1,3 +1,9 @@
+## [2.4.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.3.1...@rn-ds/components-v2.4.0) (2026-07-13)
+
+### Features
+
+* **tokens:** add typography.role scale with ten FieldForce roles ([a8bb4b7](https://github.com/quynhaIiyara/dsworkflow/commit/a8bb4b775174a2305c4473f4760b683ad15c3942))
+
 ## [2.3.1](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v2.3.0...@rn-ds/components-v2.3.1) (2026-07-10)
 
 ### Bug Fixes
