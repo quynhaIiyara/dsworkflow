@@ -10,7 +10,11 @@ import { defaultColorForRole, roleStyles } from './Text.styles';
 export type TextRole = keyof typeof typography.role;
 type ColorToken = keyof typeof colors;
 
-export type TextProps = Omit<RNTextProps, 'children'> & {
+// `role` is deliberately Omit'd from RNTextProps — RN 0.71+ ships a native
+// `role` accessibility prop whose union overlaps ours ('tab' is in both),
+// which would narrow TextProps['role'] to the intersection. Callers who want
+// the accessibility role should use `accessibilityRole`.
+export type TextProps = Omit<RNTextProps, 'children' | 'role'> & {
   /** Named type role from `design.md` (drives fontSize / lineHeight / weight / tracking). */
   role?: TextRole;
   /** Colour token override. Defaults per role (headline/title/section/subtitle/cta → ink, body/tab → inkBody, label/caption/eyebrow → inkMuted). */
