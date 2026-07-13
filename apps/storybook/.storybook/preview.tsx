@@ -34,7 +34,7 @@ const preview: Preview = {
       storySort: {
         order: [
           'Get Started',
-          ['Introduction', 'Installation', 'Agent access (MCP)', 'Versioning', 'Changelog'],
+          ['Introduction', 'Installation', 'Agent access (MCP)', 'Design language', 'Changelog'],
           'Foundations',
           ['Colour', 'Spacing', 'Radius', 'Typography'],
           'Components',

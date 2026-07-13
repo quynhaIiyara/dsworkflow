@@ -7,13 +7,42 @@ import { Changelogs } from './_components/Changelogs';
 
 Per-package changelogs live in `packages/<name>/CHANGELOG.md`, maintained
 automatically by `semantic-release` on every merge to `main` that includes a
-semver-relevant commit (`feat` / `fix` / `perf` / `BREAKING CHANGE`).
+semver-relevant commit.
 
-This page renders the current contents at build time — Vercel rebuilds the
-docs on every push, including the `chore(release): ...` commit that
-`semantic-release` pushes back with `[skip ci]` (Vercel doesn't respect that
-marker, only GitHub Actions does), so this view is always current with the
-latest release.
+## How versions get bumped
+
+Every merge to `main` runs `semantic-release` per package. There is **no
+Release PR** and no manual version bump — the commit convention drives the
+version directly.
+
+| Commit                          | Bumps       |
+|---------------------------------|-------------|
+| `feat(scope):`                  | **minor**   |
+| `fix(scope):`                   | **patch**   |
+| `perf(scope):`                  | **patch**   |
+| `BREAKING CHANGE:` (footer)     | **major**   |
+| `chore` / `docs` / `test` / `refactor` / `ci` / `build` | none |
+
+Each package has its own `release.config.js` with `commitPaths` scoped to
+its directory, so a merge only cuts a release for packages whose files
+actually changed. Tag format includes the package name so multiple packages
+can coexist:
+
+```
+@rn-ds/tokens-v0.3.1
+@rn-ds/components-v3.6.0
+```
+
+### Snapshot channel
+
+For WIP consumption without a real release:
+
+```bash
+gh workflow run release.yaml -f publish_snapshot=true
+```
+
+Publishes `0.0.0-<sha>.tgz` tarballs as workflow-run artifacts. Consumers
+install directly from those URLs.
 
 ## Format
 
@@ -31,9 +60,15 @@ Each entry is grouped by commit type. Example:
 * **components:** correct disabled opacity on Button ghost variant ([def5678](https://...))
 ```
 
-Each version link points at the GitHub compare view between the previous tag
-and this one, so you can see the exact commits that landed.
+Each version link points at the GitHub compare view between the previous
+tag and this one, so you can see the exact commits that landed.
 
 ## Per-package release history
+
+This section renders the current CHANGELOGs at build time — Vercel rebuilds
+the docs on every push, including the `chore(release): ...` commit that
+`semantic-release` pushes back with `[skip ci]` (Vercel does not respect
+that marker, only GitHub Actions does), so this view is always current with
+the latest release.
 
 <Changelogs />
