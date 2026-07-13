@@ -4,8 +4,8 @@ import {
   styles,
   eyebrowStyles,
   titleStyles,
-  rowStyles,
 } from './Card.styles';
+import { Row, type RowProps } from '../Row';
 
 export type CardProps = Omit<PressableProps, 'children'> & {
   children: ReactNode;
@@ -25,11 +25,8 @@ export type CardTitleProps = {
   children: ReactNode;
 };
 
-export type CardRowProps = ViewProps & {
-  /** Optional leading icon element. rn-ds ships no Icon component. */
-  icon?: ReactNode;
-  children: ReactNode;
-};
+/** @deprecated Prefer `RowProps` from `@rn-ds/components`. `Card.Row` is an alias for `Row`. */
+export type CardRowProps = RowProps;
 
 export type CardDividerProps = ViewProps;
 
@@ -105,23 +102,6 @@ export const CardTitle = forwardRef<Text, CardTitleProps>(function CardTitle(
 });
 CardTitle.displayName = 'Card.Title';
 
-export const CardRow = forwardRef<View, CardRowProps>(function CardRow(
-  { icon, children, style, ...rest },
-  ref,
-) {
-  return (
-    <View ref={ref} style={[rowStyles.row, style]} {...rest}>
-      {icon ? <View style={rowStyles.icon}>{icon}</View> : null}
-      {typeof children === 'string' || typeof children === 'number' ? (
-        <Text style={rowStyles.text}>{children}</Text>
-      ) : (
-        children
-      )}
-    </View>
-  );
-});
-CardRow.displayName = 'Card.Row';
-
 export const CardDivider = forwardRef<View, CardDividerProps>(function CardDivider(
   { style, ...rest },
   ref,
@@ -134,7 +114,7 @@ type CardComponent = typeof CardRoot & {
   Header: typeof CardHeader;
   Eyebrow: typeof CardEyebrow;
   Title: typeof CardTitle;
-  Row: typeof CardRow;
+  Row: typeof Row;
   Divider: typeof CardDivider;
 };
 
@@ -142,5 +122,5 @@ export const Card = CardRoot as CardComponent;
 Card.Header = CardHeader;
 Card.Eyebrow = CardEyebrow;
 Card.Title = CardTitle;
-Card.Row = CardRow;
+Card.Row = Row;
 Card.Divider = CardDivider;
