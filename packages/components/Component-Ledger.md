@@ -54,9 +54,9 @@ file is the RN change log.
 | Stepper     | Built | Done        | default / min / max                     | Quantity in bags. Optional `format` prop for value display.                                              |
 | BottomSheet | Built | Done        | open / closed                           | Quick actions, short choices.                                                                            |
 | Dialog      | Built | Not started | two-button confirm                      | Accept, reject, start, complete, log out.                                                                |
-| Tabs        | Built | Not started | segmented + subtabs                     | Details/Observations (segmented, history-only); Photos/Videos (ink-pill subtabs).                        |
-| TabBar      | Built | Not started | 4 tabs, active state                    | Home, Schedules, Requests, History.                                                                      |
-| Calendar    | Built | Not started | disabled / coloured days                |                                                                                                          |
+| Tabs        | Built | Done        | segmented + subtabs                     | Two variants: `segmented` (hairline background + white raised segment for active) and `pills` (ink pill for active). |
+| TabBar      | Built | Done        | 4 tabs, active state                    | Home, Schedules, Requests, History. Active tab in green. Consumer supplies icons; optional numeric badge.|
+| Calendar    | Built | Done        | disabled / coloured days                | Month grid. Today ring + selected fill + optional `markedDates` dot. Prev/next when `onMonthChange` is set.|
 | Banner      | Built | Done        | offline / permission / helper           | Placement encodes severity.                                                                              |
 | Toast       | Built | Not started | neutral dark, bottom                    | Never colour-coded.                                                                                      |
 | EmptyState  | Built | Not started | default                                 | Icon, one line, optional action. Illustration slot filled by downstream app.                             |
