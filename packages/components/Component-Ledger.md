@@ -40,7 +40,7 @@ file is the RN change log.
 
 | Component   | HTML  | RN          | States                                  | Notes                                                                                                    |
 |-------------|-------|-------------|-----------------------------------------|----------------------------------------------------------------------------------------------------------|
-| Button      | Built | Done        | green / blue / neutral / destructive    | Tone encodes meaning: green = SA acts, blue = system finalises. 8px radius, not pill.                    |
+| Button      | Built | Done        | green / blue / neutral / destructive    | Variants: `primary` (green), `complete` (blue, system finalise), `secondary`, `danger`, `ghost`. 8px radius, not pill. |
 | IconButton  | Built | Done        | default / pressed                       | Call, message, map, 3-dot trigger. Consumer supplies the icon element; 44×44 hit target.                 |
 | Text        | Built | Done        | full type scale                         | Consumes `typography.role.*` from `@rn-ds/tokens`. Colour defaults per role, overrideable via colour token. |
 | Card        | Built | Done        | default                                 | White surface, no coloured edges. `Card.Row` is an alias for the standalone `Row` primitive.             |

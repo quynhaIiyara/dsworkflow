@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   variant_primary: { backgroundColor: colors.green },
   variant_secondary: { backgroundColor: colors.hairline },
   variant_ghost: { backgroundColor: 'transparent' },
+  variant_complete: { backgroundColor: colors.blue },
   variant_danger: { backgroundColor: colors.red },
   pressed: { opacity: opacity.pressed },
   disabled: { opacity: opacity.disabled },
@@ -30,5 +31,6 @@ export const labelStyles = StyleSheet.create({
   variant_primary: { color: colors.white },
   variant_secondary: { color: colors.ink },
   variant_ghost: { color: colors.green },
+  variant_complete: { color: colors.white },
   variant_danger: { color: colors.white },
 });

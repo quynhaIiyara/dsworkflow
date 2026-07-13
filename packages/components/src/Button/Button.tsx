@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { Pressable, Text, View, type PressableProps } from 'react-native';
 import { styles, labelStyles } from './Button.styles';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'complete' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export type ButtonProps = Omit<PressableProps, 'children'> & {
