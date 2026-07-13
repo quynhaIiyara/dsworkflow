@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { View, Text } from 'react-native';
 import { Card } from './Card';
-import { Status } from '../Status';
+import { StatusChip } from '../StatusChip';
 import { Banner } from '../Banner';
 
 const meta: Meta<typeof Card> = {
@@ -14,7 +14,7 @@ const meta: Meta<typeof Card> = {
     docs: {
       description: {
         component:
-          'Generic content card compound: `Card` + `Card.Header`, `Card.Eyebrow`, `Card.Title`, `Card.Row`, `Card.Divider`. Composes with `Status`, `Banner`, and consumer-supplied icons — the DS does not own domain-specific card shapes.',
+          'Generic content card compound: `Card` + `Card.Header`, `Card.Eyebrow`, `Card.Title`, `Card.Row`, `Card.Divider`. Composes with `StatusChip`, `Banner`, and consumer-supplied icons — the DS does not own domain-specific card shapes.',
       },
     },
   },
@@ -52,7 +52,7 @@ export const WithHeaderAndStatus: Story = {
       <Card>
         <Card.Header>
           <Card.Eyebrow>Order SO-24815</Card.Eyebrow>
-          <Status variant="pending" label="Pending" />
+          <StatusChip variant="confirmed" label="Confirmed" />
         </Card.Header>
         <Card.Title>Suhandi Wijaya</Card.Title>
         <Card.Row>Soil health test</Card.Row>
@@ -67,7 +67,7 @@ export const WithDividerAndBanner: Story = {
       <Card>
         <Card.Header>
           <Card.Eyebrow>Order SO-24815</Card.Eyebrow>
-          <Status variant="pending" label="Pending" />
+          <StatusChip variant="confirmed" label="Confirmed" />
         </Card.Header>
         <Card.Title>Suhandi Wijaya</Card.Title>
         <Card.Row>Soil health test</Card.Row>
@@ -96,7 +96,7 @@ export const RequestCardComposition: Story = {
         <Card onPress={() => console.log('open request')} accessibilityLabel="Open request SO-24815">
           <Card.Header>
             <Card.Eyebrow>Order SO-24815</Card.Eyebrow>
-            <Status variant="pending" label="Pending" />
+            <StatusChip variant="confirmed" label="Confirmed" />
           </Card.Header>
           <Card.Title>Suhandi Wijaya</Card.Title>
           <Card.Row icon={<DummyIcon label="🧪" />}>Soil health test</Card.Row>

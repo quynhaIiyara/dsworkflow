@@ -35,13 +35,13 @@ CI attaches `0.0.0-<sha>.tgz` artifacts to the workflow run.
 ## Basic usage
 
 ```tsx
-import { Button, Status } from '@rn-ds/components';
+import { Button, StatusChip } from '@rn-ds/components';
 import { colors, spacing } from '@rn-ds/tokens';
 
 export function OrderRow() {
   return (
     <View style={{ flexDirection: 'row', gap: spacing.s4 }}>
-      <Status variant="confirmed" label="Confirmed" />
+      <StatusChip variant="confirmed" label="Confirmed" />
       <Button label="View" variant="primary" onPress={() => {}} />
     </View>
   );

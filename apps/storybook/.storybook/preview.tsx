@@ -38,7 +38,7 @@ const preview: Preview = {
           'Foundations',
           ['Colour', 'Spacing', 'Radius', 'Typography'],
           'Components',
-          ['Button', 'Status'],
+          ['Button', 'StatusChip'],
         ],
       },
     },
