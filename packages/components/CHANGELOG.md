@@ -1,3 +1,9 @@
+## [3.4.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.3.0...@rn-ds/components-v3.4.0) (2026-07-13)
+
+### Features
+
+* **components:** add Tabs, TabBar, Calendar navigation primitives ([5090533](https://github.com/quynhaIiyara/dsworkflow/commit/50905335705a9dec8cfe6c953e819a53c25a9f5d))
+
 ## [3.3.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.2.0...@rn-ds/components-v3.3.0) (2026-07-13)
 
 ### Features
