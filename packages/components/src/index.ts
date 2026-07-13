@@ -4,5 +4,6 @@ export * from './Banner';
 export * from './BottomSheet';
 export * from './Button';
 export * from './Card';
+export * from './Row';
 export * from './StatusChip';
 export * from './Table';

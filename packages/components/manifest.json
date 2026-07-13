@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T06:41:14.763Z",
+  "generatedAt": "2026-07-13T07:16:00.592Z",
   "versions": {
     "tokens": "0.0.0",
     "components": "0.0.0"
@@ -96,6 +96,27 @@
       ]
     },
     {
+      "name": "Row",
+      "description": null,
+      "path": "packages/components/src/Row/Row.tsx",
+      "props": [
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional leading icon element. rn-ds ships no Icon component."
+        },
+        {
+          "name": "onPress",
+          "type": "(event: GestureResponderEvent) => void",
+          "required": false,
+          "defaultValue": null,
+          "description": "When set, the row renders as a `Pressable` with a pressed opacity state."
+        }
+      ]
+    },
+    {
       "name": "Card.Header",
       "description": null,
       "path": "packages/components/src/Card/Card.tsx",
@@ -112,20 +133,6 @@
       "description": null,
       "path": "packages/components/src/Card/Card.tsx",
       "props": []
-    },
-    {
-      "name": "Card.Row",
-      "description": null,
-      "path": "packages/components/src/Card/Card.tsx",
-      "props": [
-        {
-          "name": "icon",
-          "type": "ReactNode",
-          "required": false,
-          "defaultValue": null,
-          "description": "Optional leading icon element. rn-ds ships no Icon component."
-        }
-      ]
     },
     {
       "name": "Card.Divider",

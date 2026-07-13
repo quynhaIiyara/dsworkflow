@@ -43,8 +43,8 @@ file is the RN change log.
 | Button      | Built | Done        | green / blue / neutral / destructive    | Tone encodes meaning: green = SA acts, blue = system finalises. 8px radius, not pill.                    |
 | IconButton  | Built | Not started | default / pressed                       | Call, message, map, 3-dot trigger.                                                                       |
 | Text        | Built | Not started | full type scale                         | Consumes `typography.role.*` from `@rn-ds/tokens`.                                                       |
-| Card        | Built | Done        | default                                 | White surface, no coloured edges. Currently exposes `Card.Row` as a compound; standalone `Row` pending.  |
-| Row         | Built | Not started | default / pressed                       | Single list row. Blocked on promoting `Card.Row` to a top-level primitive.                               |
+| Card        | Built | Done        | default                                 | White surface, no coloured edges. `Card.Row` is an alias for the standalone `Row` primitive.             |
+| Row         | Built | Done        | default / pressed                       | Single list row. Optional leading icon slot. Pass `onPress` to render as `Pressable`.                    |
 | Badge       | Built | Done        | count / label                           |                                                                                                          |
 | Chip        | Built | Not started | selectable / removable                  | Filter chips, brand chips.                                                                               |
 | Input       | Built | Not started | default / focus / error                 | Kit input is white + hairline + green focus ring.                                                        |
