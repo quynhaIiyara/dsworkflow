@@ -1,15 +1,64 @@
 {
-  "generatedAt": "2026-07-13T07:25:46.148Z",
+  "generatedAt": "2026-07-13T07:38:49.780Z",
   "versions": {
     "tokens": "0.0.0",
     "components": "0.0.0"
   },
   "components": [
     {
+      "name": "Textarea",
+      "description": null,
+      "path": "packages/components/src/Textarea/Textarea.tsx",
+      "props": [
+        {
+          "name": "minRows",
+          "type": "number",
+          "required": false,
+          "defaultValue": "3",
+          "description": "Rows shown by default (min height in `body` line-heights). Defaults to 3."
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "errorIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "helperText",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Text",
       "description": null,
       "path": "packages/components/src/Text/Text.tsx",
       "props": [
+        {
+          "name": "role",
+          "type": "enum",
+          "required": false,
+          "defaultValue": null,
+          "description": "Named type role from `design.md` (drives fontSize / lineHeight / weight / tracking)."
+        },
         {
           "name": "color",
           "type": "enum",
@@ -82,6 +131,69 @@
       ]
     },
     {
+      "name": "Stepper",
+      "description": null,
+      "path": "packages/components/src/Stepper/Stepper.tsx",
+      "props": [
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onChange",
+          "type": "(value: number) => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false,
+          "defaultValue": "0",
+          "description": null
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "defaultValue": "Number.POSITIVE_INFINITY",
+          "description": null
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "defaultValue": "1",
+          "description": null
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "format",
+          "type": "(value: number) => string",
+          "required": false,
+          "defaultValue": null,
+          "description": "Value formatter — e.g. `(n) => \\`${n} bags\\``. Defaults to raw number."
+        }
+      ]
+    },
+    {
       "name": "StatusChip",
       "description": null,
       "path": "packages/components/src/StatusChip/StatusChip.tsx",
@@ -110,6 +222,55 @@
       ]
     },
     {
+      "name": "SearchField",
+      "description": null,
+      "path": "packages/components/src/SearchField/SearchField.tsx",
+      "props": [
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "searchIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Left-side glyph. Consumer supplies (no Icon primitive)."
+        },
+        {
+          "name": "clearIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Right-side glyph shown when the field has a value. Defaults to a \"×\"."
+        },
+        {
+          "name": "onClear",
+          "type": "() => void",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "resultCount",
+          "type": "number",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional result count meta line below the field."
+        },
+        {
+          "name": "resultLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "results",
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Row",
       "description": null,
       "path": "packages/components/src/Row/Row.tsx",
@@ -131,6 +292,55 @@
       ]
     },
     {
+      "name": "Input",
+      "description": null,
+      "path": "packages/components/src/Input/Input.tsx",
+      "props": [
+        {
+          "name": "leadingIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional leading icon element. rn-ds ships no Icon component."
+        },
+        {
+          "name": "trailingSlot",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional trailing slot (used by e.g. SearchField for a clear button)."
+        },
+        {
+          "name": "error",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": "Field-level error. Replaces `helperText` while set. Renders a red\nborder and a red helper line. Pass `errorIcon` to add the\n`alert-triangle` slot per design.md."
+        },
+        {
+          "name": "errorIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "helperText",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": "Muted helper line under the field when not in an error state."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "IconButton",
       "description": null,
       "path": "packages/components/src/IconButton/IconButton.tsx",
@@ -146,6 +356,41 @@
           "name": "onPress",
           "type": "(event: GestureResponderEvent) => void",
           "required": true,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "ChoiceList",
+      "description": null,
+      "path": "packages/components/src/ChoiceList/ChoiceList.tsx",
+      "props": [
+        {
+          "name": "options",
+          "type": "ChoiceOption[]",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onChange",
+          "type": "(id: string) => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
           "defaultValue": null,
           "description": null
         }
@@ -190,6 +435,55 @@
           "required": false,
           "defaultValue": null,
           "description": "Optional custom remove icon. Falls back to a \"×\" glyph (U+00D7)."
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "Checkbox",
+      "description": null,
+      "path": "packages/components/src/Checkbox/Checkbox.tsx",
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onChange",
+          "type": "(checked: boolean) => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Right-side label. String uses the `body` role; ReactNode is rendered as-is."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": null
+        },
+        {
+          "name": "checkIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional check glyph override. Falls back to \"✓\"."
         },
         {
           "name": "accessibilityLabel",

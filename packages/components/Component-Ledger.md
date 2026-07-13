@@ -47,11 +47,11 @@ file is the RN change log.
 | Row         | Built | Done        | default / pressed                       | Single list row. Optional leading icon slot. Pass `onPress` to render as `Pressable`.                    |
 | Badge       | Built | Done        | count / label                           |                                                                                                          |
 | Chip        | Built | Done        | selectable / removable                  | Filter chips, brand chips. Selected state = `green-pale` wash + green border.                            |
-| Input       | Built | Not started | default / focus / error                 | Kit input is white + hairline + green focus ring.                                                        |
-| Textarea    | Built | Not started | default / limit reached                 | Char limits: observations 1000, advisory 500.                                                            |
-| ChoiceList  | Built | Not started | single-choice                           | Flat hairline rows, leading 22px radio filling green when selected.                                      |
-| Checkbox    | Built | Not started | on / off                                | Consent toggle on login.                                                                                 |
-| Stepper     | Built | Not started | default / min / max                     | Quantity in bags.                                                                                        |
+| Input       | Built | Done        | default / focus / error                 | Kit input is white + hairline + green focus ring. Optional leading icon and trailing slot; field-level error with red helper. |
+| Textarea    | Built | Done        | default / limit reached                 | Char limits: observations 1000, advisory 500. Character counter turns red on limit reached.              |
+| ChoiceList  | Built | Done        | single-choice                           | Flat hairline rows, leading 22px radio filling green when selected. Options may be individually disabled.|
+| Checkbox    | Built | Done        | on / off                                | Consent toggle on login. Green fill when checked; optional string or ReactNode label.                    |
+| Stepper     | Built | Done        | default / min / max                     | Quantity in bags. Optional `format` prop for value display.                                              |
 | BottomSheet | Built | Done        | open / closed                           | Quick actions, short choices.                                                                            |
 | Dialog      | Built | Not started | two-button confirm                      | Accept, reject, start, complete, log out.                                                                |
 | Tabs        | Built | Not started | segmented + subtabs                     | Details/Observations (segmented, history-only); Photos/Videos (ink-pill subtabs).                        |
@@ -61,7 +61,7 @@ file is the RN change log.
 | Toast       | Built | Not started | neutral dark, bottom                    | Never colour-coded.                                                                                      |
 | EmptyState  | Built | Not started | default                                 | Icon, one line, optional action. Illustration slot filled by downstream app.                             |
 | Skeleton    | Built | Not started | default                                 | Loading placeholder.                                                                                     |
-| SearchField | Built | Not started | default / results / clear               | Result count + clear control.                                                                            |
+| SearchField | Built | Done        | default / results / clear               | Composes `Input` with a leading search icon slot, a trailing clear affordance, and an optional result count meta line. |
 | StatusChip  | Built | Done        | 7 fixed statuses                        | Confirmed, In progress, Rejected, Cancelled, Auto-cancelled, Completed, Partially completed. Colour tone locked per `design.md`: green / blue / red / red / red / neutral / amber. |
 
 ## Foundations
