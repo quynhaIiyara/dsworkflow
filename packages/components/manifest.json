@@ -1,10 +1,59 @@
 {
-  "generatedAt": "2026-07-13T07:48:24.589Z",
+  "generatedAt": "2026-07-13T07:57:22.154Z",
   "versions": {
     "tokens": "0.0.0",
     "components": "0.0.0"
   },
   "components": [
+    {
+      "name": "Toast",
+      "description": null,
+      "path": "packages/components/src/Toast/Toast.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "action",
+          "type": "ToastAction",
+          "required": false,
+          "defaultValue": null,
+          "description": "At most one text action per design.md."
+        },
+        {
+          "name": "autoHideMs",
+          "type": "number",
+          "required": false,
+          "defaultValue": "4000",
+          "description": "Auto-dismiss delay in ms. Defaults to 4000 (transient copy). Pass a\nlarger number (~6000) for blocking errors, or `null` to disable\nauto-dismiss and rely on tap-to-close."
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
     {
       "name": "Textarea",
       "description": null,
@@ -299,6 +348,76 @@
       ]
     },
     {
+      "name": "Skeleton",
+      "description": null,
+      "path": "packages/components/src/Skeleton/Skeleton.tsx",
+      "props": [
+        {
+          "name": "width",
+          "type": "DimensionValue",
+          "required": false,
+          "defaultValue": "100%",
+          "description": null
+        },
+        {
+          "name": "height",
+          "type": "DimensionValue",
+          "required": false,
+          "defaultValue": "12",
+          "description": null
+        },
+        {
+          "name": "borderRadius",
+          "type": "number",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "animate",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "true",
+          "description": "Disable the pulse animation (e.g. for reduced-motion contexts)."
+        },
+        {
+          "name": "style",
+          "type": "ViewStyle",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "Loading",
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "SkeletonText",
+      "description": "A convenience row of three stacked skeleton lines.",
+      "path": "packages/components/src/Skeleton/Skeleton.tsx",
+      "props": [
+        {
+          "name": "lines",
+          "type": "number",
+          "required": false,
+          "defaultValue": "3",
+          "description": null
+        },
+        {
+          "name": "lastLineWidth",
+          "type": "DimensionValue",
+          "required": false,
+          "defaultValue": "60%",
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "SearchField",
       "description": null,
       "path": "packages/components/src/SearchField/SearchField.tsx",
@@ -433,6 +552,118 @@
           "name": "onPress",
           "type": "(event: GestureResponderEvent) => void",
           "required": true,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "EmptyState",
+      "description": null,
+      "path": "packages/components/src/EmptyState/EmptyState.tsx",
+      "props": [
+        {
+          "name": "illustration",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": "Illustration slot. Consumer supplies the ruled asset (illustrations live\nin the downstream FieldForce app repo). When omitted, renders the dashed\nplaceholder block from `design.md`."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "action",
+          "type": "EmptyStateAction",
+          "required": false,
+          "defaultValue": null,
+          "description": "Optional single action per the pairing rule (\"illustration, title, line, one action\")."
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "Dialog",
+      "description": null,
+      "path": "packages/components/src/Dialog/Dialog.tsx",
+      "props": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onClose",
+          "type": "() => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "confirmLabel",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": "Primary action label. Rendered in the green primary or danger variant."
+        },
+        {
+          "name": "onConfirm",
+          "type": "() => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "cancelLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": "Cancel",
+          "description": "Secondary action label. Defaults to \"Cancel\" — pass `null` to render a single-button dialog."
+        },
+        {
+          "name": "destructive",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": "false",
+          "description": "When true, the primary button uses the danger variant (log out, reject, cancel booking)."
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
           "defaultValue": null,
           "description": null
         }
