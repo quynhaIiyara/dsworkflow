@@ -1,3 +1,9 @@
+## [3.6.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.5.0...@rn-ds/components-v3.6.0) (2026-07-13)
+
+### Features
+
+* **components:** add complete Button variant, mdx docs page ([2a68e8e](https://github.com/quynhaIiyara/dsworkflow/commit/2a68e8e690fb9fd0f369758907c2641739f6e4d5))
+
 ## [3.5.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.4.0...@rn-ds/components-v3.5.0) (2026-07-13)
 
 ### Features
