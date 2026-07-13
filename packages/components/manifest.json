@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T07:38:49.780Z",
+  "generatedAt": "2026-07-13T07:48:24.589Z",
   "versions": {
     "tokens": "0.0.0",
     "components": "0.0.0"
@@ -69,6 +69,48 @@
       ]
     },
     {
+      "name": "Tabs",
+      "description": null,
+      "path": "packages/components/src/Tabs/Tabs.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "TabItem[]",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onChange",
+          "type": "(id: string) => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "defaultValue": "segmented",
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
+    },
+    {
       "name": "Table.Header",
       "description": null,
       "path": "packages/components/src/Table/Table.tsx",
@@ -126,6 +168,41 @@
           "type": "enum",
           "required": false,
           "defaultValue": "md",
+          "description": null
+        }
+      ]
+    },
+    {
+      "name": "TabBar",
+      "description": null,
+      "path": "packages/components/src/TabBar/TabBar.tsx",
+      "props": [
+        {
+          "name": "items",
+          "type": "TabBarItem[]",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "activeId",
+          "type": "string",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onChange",
+          "type": "(id: string) => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
           "description": null
         }
       ]
@@ -523,6 +600,97 @@
       "description": null,
       "path": "packages/components/src/Card/Card.tsx",
       "props": []
+    },
+    {
+      "name": "Calendar",
+      "description": null,
+      "path": "packages/components/src/Calendar/Calendar.tsx",
+      "props": [
+        {
+          "name": "month",
+          "type": "Date",
+          "required": true,
+          "defaultValue": null,
+          "description": "Any date within the target month."
+        },
+        {
+          "name": "onMonthChange",
+          "type": "(nextMonth: Date) => void",
+          "required": false,
+          "defaultValue": null,
+          "description": "Callback when the user taps prev/next. If omitted, prev/next are hidden."
+        },
+        {
+          "name": "selectedDate",
+          "type": "Date",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "onSelect",
+          "type": "(date: Date) => void",
+          "required": true,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "minDate",
+          "type": "Date",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "maxDate",
+          "type": "Date",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "disabledDates",
+          "type": "Date[]",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "markedDates",
+          "type": "Date[]",
+          "required": false,
+          "defaultValue": null,
+          "description": "Days that render a small green dot marker under the number."
+        },
+        {
+          "name": "weekStartsOn",
+          "type": "enum",
+          "required": false,
+          "defaultValue": "0",
+          "description": null
+        },
+        {
+          "name": "prevIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "nextIcon",
+          "type": "ReactNode",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        },
+        {
+          "name": "accessibilityLabel",
+          "type": "string",
+          "required": false,
+          "defaultValue": null,
+          "description": null
+        }
+      ]
     },
     {
       "name": "Button",
