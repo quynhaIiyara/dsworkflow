@@ -7,11 +7,13 @@ import type { TextRole } from './Text';
 export const defaultColorForRole: Record<TextRole, keyof typeof colors> = {
   headline: 'ink',
   title: 'ink',
+  cardTitle: 'ink',
   section: 'ink',
   subtitle: 'ink',
   cta: 'ink',
   body: 'inkBody',
   tab: 'inkBody',
+  dense: 'inkBody',
   label: 'inkMuted',
   caption: 'inkMuted',
   eyebrow: 'inkMuted',

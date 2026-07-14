@@ -53,3 +53,20 @@ export const Stacked: Story = {
     </div>
   ),
 };
+
+export const DenseRow: Story = {
+  args: {
+    icon: <PinIcon />,
+    children: 'Karawang, West Java',
+    textSize: 'sm',
+    textColor: 'inkMuted',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          '`textSize` (a `typography.size` token) and `textColor` (any colour token) override the inline `<Text>` Row wraps a string child in. Use for denser rows like `.svc-loc` (12/inkMuted). For off-scale sizes (12.5, 13.5) pass a `<Text style={{ fontSize: 12.5 }}>` child instead.',
+      },
+    },
+  },
+};
