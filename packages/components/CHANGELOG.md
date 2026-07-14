@@ -1,3 +1,9 @@
+## [3.7.1](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.7.0...@rn-ds/components-v3.7.1) (2026-07-14)
+
+### Bug Fixes
+
+* **ci:** build @rn-ds/components before storybook so Vercel can resolve it ([1f7b576](https://github.com/quynhaIiyara/dsworkflow/commit/1f7b5769b413dde21c9f54cc28439877e056522d))
+
 ## [3.7.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.6.0...@rn-ds/components-v3.7.0) (2026-07-14)
 
 ### Features
