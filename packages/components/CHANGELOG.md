@@ -1,3 +1,10 @@
+## [3.7.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.6.0...@rn-ds/components-v3.7.0) (2026-07-14)
+
+### Features
+
+* **components:** token overrides for Text (size/weight) and Row (textSize/textColor) ([ed65903](https://github.com/quynhaIiyara/dsworkflow/commit/ed659034fe1e44ed5d2307f0470b21d04c2635a8))
+* **tokens:** add cardTitle (18) and dense (13) typography roles ([215633a](https://github.com/quynhaIiyara/dsworkflow/commit/215633a9383e3e43fc5569e090835172c55b8537))
+
 ## [3.6.0](https://github.com/quynhaIiyara/dsworkflow/compare/@rn-ds/components-v3.5.0...@rn-ds/components-v3.6.0) (2026-07-13)
 
 ### Features
