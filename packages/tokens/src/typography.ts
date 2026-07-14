@@ -75,6 +75,17 @@ export const typography = {
       "fontSize": 15,
       "lineHeight": 18,
       "fontWeight": "700"
+    },
+    "cardTitle": {
+      "fontSize": 18,
+      "lineHeight": 22,
+      "fontWeight": "700",
+      "letterSpacing": -0.18
+    },
+    "dense": {
+      "fontSize": 13,
+      "lineHeight": 18,
+      "fontWeight": "400"
     }
   }
 } as const;
