@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/blocks';
+import { Default, Busy, NoSlots, Overdue } from './_components/RequestCard';
+
+<Meta title="Showcase/Request Card" />
+
+# Request Card
+
+The pending-request row for the accept flow. Farmer, service, location, and
+requested date, with a slot-availability banner derived from the date. The
+whole card taps through to the request detail; the **Select new date** button
+appears only when the day is busy or unavailable.
+
+Rendered to match the source in `design/design-system/docs-site/shell.html`
+(`.rqc`) pixel-for-pixel.
+
+**Built from:** icons (`LeafIcon`, `MapPinIcon`, `CalendarIcon`,
+`CheckCircleIcon`, `AlertIcon`, `ChevronRight`) + local `StatusChip`,
+`MetaRow`, `SlotBanner`, and `SelectNewDateButton` compositions (inline).
+
+## Preview
+
+<Default />
+
+## States
+
+The slot-availability banner is derived from the requested date. A busy or
+unavailable day also surfaces the **Select new date** action. An overdue
+request paints the date row red and swaps the chip to the overdue tone.
+
+### Slots available
+
+<Default />
+
+### Busy day
+
+<Busy />
+
+### No free slots
+
+<NoSlots />
+
+### Overdue
+
+<Overdue />
+
+## Anatomy
+
+```tsx
+<Pressable onPress={openDetail} style={cardStyle /* 352 wide, 16 pad, row+flex-start, gap 10 */}>
+  <View style={{ flex: 1 }}>
+    {/* Top row: identity block + status chip */}
+    <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
+      <View style={{ flex: 1 }}>
+        <Text role="eyebrow">Order SO-24815</Text>
+        <Text role="cardTitle">Suhandi Wijaya</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 3 }}>
+          <LeafIcon size={15} color={colors.inkBody} />
+          <Text style={{ fontSize: 13.5, color: colors.inkBody }}>Soil health test</Text>
+        </View>
+      </View>
+      <StatusChip tone="pending" label="Pending" />
+    </View>
+
+    {/* Meta divider + rows */}
+    <View style={{ marginTop: 14, paddingTop: 14, borderTopWidth: 1, borderTopColor: colors.hairline, gap: 7 }}>
+      <MetaRow icon={<MapPinIcon size={18} color={colors.inkMuted} />}>
+        <Text role="dense">Karawang, West Java</Text>
+      </MetaRow>
+      <MetaRow icon={<CalendarIcon size={18} color={colors.inkMuted} />}>
+        <Text role="dense">Requested in 3 days</Text>
+      </MetaRow>
+    </View>
+
+    <SlotBanner tone="ok" />
+    {/* SelectNewDateButton only when slot is 'warn' or 'no' */}
+  </View>
+
+  <ChevronRight size={20} color={colors.inkPlaceholder} style={{ marginTop: 2 }} />
+</Pressable>
+```
+

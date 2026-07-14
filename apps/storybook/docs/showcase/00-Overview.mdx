@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Showcase/Overview" />
+
+# Showcase
+
+Composites — the cards and panels the FieldForce app is built out of, assembled
+from `@rn-ds/components` primitives. Each page shows a canonical render, the
+state variants that matter, and the composition snippet you'd paste into your
+screen.
+
+These are **not shipped** as `@rn-ds/components`. They live here as reference
+compositions, distilled from the design prototypes. If a composite proves
+reusable across screens, promote it to the package.
+
+## The catalogue
+
+- **Request Card** — pending-request row for the accept flow.
+- **Scheduled Service Card** — day-view schedule row.
+- **Bill Summary** — coupon-aware total-payable panel.
+- **Product Recommendation** — inline product-advisory card.
+- **ChoiceList family** — four single-select radio-list patterns (reject reason, slot picker, coupon sheet, country picker).
+- **Icons** — the 54-icon stroke pack behind every composite on this page.
+
+More composites will be added as the shape settles on these five.
+
+## Reading the composite pages
+
+Every composite page follows the same shape:
+
+- **Built from** — the primitives assembled, in the order they appear.
+- **Preview** — the canonical render.
+- **States** — the meaningful variants (status, availability, empty, etc.).
+- **Anatomy** — the JSX to paste, matching what you see above.
+
+## A note on icons
+
+`@rn-ds/components` deliberately ships no `Icon` primitive — `Row`, `Banner`,
+and `IconButton` accept an `icon` slot so the consuming app supplies its own
+(`react-native-svg`, `expo-vector-icons`, `phosphor-react-native`, …). The
+showcase demos import from a local 54-icon pack (`_components/icons/pack.tsx`)
+that renders inline `<svg>` — see the **Icons** page for the full set. In a
+real RN app you'd rewire those to `react-native-svg` components.

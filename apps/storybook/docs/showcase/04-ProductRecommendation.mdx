@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/blocks';
+import { Empty, Filled } from './_components/ProductRecommendation';
+
+<Meta title="Showcase/Product Recommendation" />
+
+# Product Recommendation
+
+The product-advisory card the agronomist attaches to a completed record.
+Product identity + delete affordance on top, quantity stepper in the middle
+(bag count + MT conversion below the primary value), and a required
+free-text advisory note with a live character counter.
+
+Diverges from `gallery.html #c28` — the current design uses a stepper and
+required textarea instead of the collapsible-note pattern in the gallery
+snapshot.
+
+**Built from:** `Text` · inline `StepperControl` + `QuietTextarea` + trash
+button + icon tile · icons (`PackageIcon`, `TrashIcon`)
+
+## Preview
+
+Empty state (initial quantity `1`, no note yet):
+
+<Empty />
+
+## States
+
+### Filled
+
+An agronomist has bumped the quantity and written the advisory note. Both
+the stepper's MT conversion and the character counter update live.
+
+<Filled />
+
+## Anatomy
+
+```tsx
+<View style={cardStyle /* 352 wide, 20 padding, 20 radius, soft shadow */}>
+  {/* Identity + delete */}
+  <View style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start' }}>
+    <IconTile size={52} bg={colors.greenPale}>
+      <PackageIcon size={28} color={colors.greenDark} />
+    </IconTile>
+    <View style={{ flex: 1 }}>
+      <Text role="eyebrow">YARAMILA</Text>
+      <Text role="title">YaraMila Complex 12-11-18</Text>
+      <Text style={{ fontSize: 14, color: colors.inkMuted, marginTop: 4 }}>
+        25 kg bag · Rp 210.000 / bag
+      </Text>
+    </View>
+    <Pressable onPress={remove}>
+      <TrashIcon size={22} color={colors.inkMuted} />
+    </Pressable>
+  </View>
+
+  <Divider marginTop={18} marginBottom={18} />
+
+  {/* Quantity row */}
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Text style={{ fontSize: 17, fontWeight: '600' }}>Quantity</Text>
+    <StepperControl value={qty} onChange={setQty} min={1} max={99} />
+    {/* Pill container: surface bg, 100 radius, 5 padding, min-width 220.
+        Buttons: 40 circle, white bg, 22px ± glyph.
+        Value stack: "N bags" (20·700·ink) + "(0.025 MT)" (12·inkMuted). */}
+  </View>
+
+  {/* Required advisory note */}
+  <View style={{ marginTop: 22 }}>
+    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 }}>
+      <View style={{ flexDirection: 'row' }}>
+        <Text style={eyebrowStyle /* 12·600·caps·.06em */}>ADVISORY NOTE</Text>
+        <Text style={{ ...eyebrowStyle, color: colors.greenDark }}>  ·  REQUIRED</Text>
+      </View>
+      <Text style={{ fontSize: 12, color: colors.inkMuted }}>{note.length}/500</Text>
+    </View>
+    <QuietTextarea
+      value={note}
+      onChangeText={setNote}
+      placeholder="E.g., Low nitrogen in soil, recommended for better yield"
+    />
+    {/* Inline TextInput: surface bg, no border, 15/22 body, 14 padding, 96 min height */}
+  </View>
+</View>
+```
+

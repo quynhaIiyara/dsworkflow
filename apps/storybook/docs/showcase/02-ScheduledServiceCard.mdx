@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/blocks';
+import { Confirmed, InProgress, Incomplete, Completed } from './_components/ScheduledServiceCard';
+
+<Meta title="Showcase/Scheduled Service Card" />
+
+# Scheduled Service Card
+
+The day-view row for a confirmed booking. Time slot, status, farmer identity,
+service context, location, and the state-driven action row stitched together —
+the surface an agronomist taps hundreds of times a week.
+
+Rendered to match the source in `design/design-system/docs-site/shell.html`
+(`.svc`) pixel-for-pixel.
+
+**Built from:** icons (`ClockIcon`, `MapPinIcon`, `ChevronRight`, `DotsIcon`,
+`PhoneIcon`, `MessageIcon`, `NavigateIcon`, `PlayIcon`, `CheckIcon`) + local
+`StatusChip`, `Avatar`, `QuickAction`, `PrimaryAction` compositions (inline).
+
+## Preview
+
+<Confirmed />
+
+## States
+
+The tone drives the visual weight, the avatar wash, the card wash (running →
+`blueWash`, completed → `.86` opacity), and the primary action itself
+(Confirmed → green **Start service**, In progress → blue **Complete service**,
+Completed → no action row).
+
+### Confirmed
+
+<Confirmed />
+
+### In progress
+
+<InProgress />
+
+### Incomplete
+
+<Incomplete />
+
+### Completed
+
+<Completed />
+
+## Anatomy
+
+```tsx
+<View style={cardStyle /* 352 wide, 15/16 pad, white bg, 16 radius, shadow */}>
+  {/* Top: time + chip + menu dots */}
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+    <View style={{ flexDirection: 'row', gap: 7 }}>
+      <ClockIcon size={14} color={colors.greenDark} />
+      <Text style={{ fontSize: 12.5, fontWeight: '600', color: colors.inkBody }}>8:00 – 11:00 AM</Text>
+    </View>
+    <View style={{ flexDirection: 'row', gap: 9 }}>
+      <StatusChip tone="confirmed" label="Confirmed" />
+      <DotsIcon size={20} color={colors.inkPlaceholder} />
+    </View>
+  </View>
+
+  {/* Main: avatar + identity + chevron */}
+  <View style={{ flexDirection: 'row', gap: 13, marginTop: 13 }}>
+    <Avatar initials="DW" tone="confirmed" /* 46, greenPale bg, greenDark 18·700 */ />
+    <View style={{ flex: 1 }}>
+      <Text role="cardTitle">Dewi Lestari</Text>
+      <Text role="dense">Soil health test · SO-24790</Text>
+      <View style={{ flexDirection: 'row', gap: 6, marginTop: 6 }}>
+        <MapPinIcon size={13} color={colors.inkMuted} />
+        <Text style={{ fontSize: 12.5, color: colors.inkMuted }}>Karawang, West Java</Text>
+      </View>
+    </View>
+    <ChevronRight size={18} color={colors.inkPlaceholder} style={{ alignSelf: 'center' }} />
+  </View>
+
+  {/* Action row: hairline divider + state-driven buttons */}
+  <View style={{ flexDirection: 'row', gap: 10, marginTop: 15, paddingTop: 15, borderTopWidth: 1, borderTopColor: colors.hairline }}>
+    <QuickAction icon={<PhoneIcon size={19} color={colors.greenDark} />} label="Call" />
+    <QuickAction icon={<MessageIcon size={19} color={colors.greenDark} />} label="Message" />
+    <QuickAction icon={<NavigateIcon size={19} color={colors.greenDark} />} label="Directions" />
+    <PrimaryAction label="Start service" tone="start" icon={<PlayIcon size={16} color="white" />} />
+  </View>
+</View>
+```
+
