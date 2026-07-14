@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+import { Default } from './_components/BillSummary';
+
+<Meta title="Showcase/Bill Summary" />
+
+# Bill Summary
+
+The coupon-aware total-payable panel on the booking-confirmation and
+completed-record screens. Line items on top, coupon badge in the middle,
+total anchored at the bottom in the brand green so the payable number is
+what the eye lands on.
+
+**Built from:** `Card` · `Card.Divider` · `Text` · tokens (`greenPale`,
+`greenDark`)
+
+## Preview
+
+<Default />
+
+## Anatomy
+
+```tsx
+<Card>
+  <Card.Header>
+    <Card.Eyebrow>Bill amount</Card.Eyebrow>
+  </Card.Header>
+
+  <Line label="Subtotal" value="Rp 75.000" />
+  <Card.Divider />
+  <Line label="Discount applied" value="− Rp 20.000" tone="discount" />
+  <Card.Divider />
+
+  <CouponBadge code="HARVEST10" />
+
+  <Card.Divider />
+  <Line label="Total payable" value="Rp 55.000" strong tone="total" />
+</Card>
+```

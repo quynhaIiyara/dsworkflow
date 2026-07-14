@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/blocks';
+import {
+  RejectReason,
+  SlotPicker,
+  CouponRow,
+  CountryPicker,
+} from './_components/ChoiceListFamily';
+
+<Meta title="Showcase/ChoiceList family" />
+
+# ChoiceList family
+
+Four single-select radio-list patterns from `gallery.html` (cells `#c41`–`#c44`).
+Same underlying interaction (pick one), four different row shapes — a plain
+label, a card-per-option with icon + subtitle, a code + label + amount row,
+and a flag + name row with a ring-in-ring radio.
+
+Only **Reject reason** uses the shipped `ChoiceList` primitive directly.
+The other three are inline compositions built on the same radio pattern
+because ChoiceList's rows are label-only.
+
+**Built from:** `ChoiceList` · `Text` · `Pressable` · icons (`CheckIcon`,
+`SunIcon`) + emoji flags (`🇮🇩` etc. — matches the gallery)
+
+## Reject reason
+
+Plain label + radio, per-row `border-bottom` hairline, tap to select.
+Uses the shipped `<ChoiceList>` primitive with sample reject reasons.
+
+<RejectReason />
+
+```tsx
+<ChoiceList
+  value={reason}
+  onChange={setReason}
+  options={[
+    { id: 'unreachable', label: 'Farmer could not be reached' },
+    { id: 'no-slot', label: 'No available slot for the requested date' },
+    { id: 'weather', label: 'Weather rendered visit unsafe' },
+  ]}
+/>
+```
+
+## Slot picker
+
+Card-per-option with a leading icon tile, name, and hours. Selected state
+switches the card to `greenPale` bg + `green` border, and the icon tile
+swaps to `greenLight` bg + `greenDark` glyph. The hours line carries
+availability state: `booked` (amber) or `na` (red + disabled).
+
+<SlotPicker />
+
+## Coupon sheet row
+
+Code (14 · 700) + label (12.5 · muted) + amount (13 · 600 · greenDark),
+`border-bottom` between rows. Radio on the LEFT (gallery HTML lists it
+first even though CSS visually reorders in `#c41`/`#c42`).
+
+<CouponRow />
+
+## Country picker row
+
+Ring-in-ring radio (via nested Views, matching `.opt-row::before` +
+inset shadow), 22×16 emoji flag, name at 14 · 500 · ink. Min-height 52
+so touch targets stay comfortable.
+
+<CountryPicker />
+
+## Anatomy
+
+Shared radio dot (used everywhere except Country picker):
+
+```tsx
+function Radio({ selected }: { selected: boolean }) {
+  return (
+    <View style={{
+      width: 22, height: 22, borderRadius: 11,
+      borderWidth: 2,
+      borderColor: selected ? colors.green : colors.hairline,
+      backgroundColor: selected ? colors.green : 'transparent',
+      alignItems: 'center', justifyContent: 'center',
+    }}>
+      {selected ? <CheckIcon size={13} color={colors.white} strokeWidth={2.5} /> : null}
+    </View>
+  );
+}
+```
+
+Per-family row (Slot picker shown; Coupon and Country follow the same
+shape with different content slots):
+
+```tsx
+<Pressable
+  accessibilityRole="radio"
+  accessibilityState={{ selected, disabled: na }}
+  onPress={pick}
+  style={{
+    flexDirection: 'row', alignItems: 'center', gap: 14,
+    paddingVertical: 13, paddingHorizontal: 15,
+    backgroundColor: selected ? colors.greenPale : colors.card,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    borderColor: selected ? colors.green : 'transparent',
+    // + soft shadow, na → opacity .6
+  }}
+>
+  <Radio selected={selected} />
+  <IconTile bg={selected ? colors.greenLight : colors.surface}><SunIcon /></IconTile>
+  <View style={{ flex: 1 }}>
+    <Text role="subtitle">Morning</Text>
+    <Text style={{ fontSize: 12.5, color: hoursColor }}>10:00 AM – 12:00 PM</Text>
+  </View>
+</Pressable>
+```
+

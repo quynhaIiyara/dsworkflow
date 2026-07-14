@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks';
+import { Default, Sizes, Colours } from './_components/IconGrid';
+
+<Meta title="Showcase/Icons" />
+
+# Icons
+
+The 54-icon stroke set the FieldForce prototypes ship with — a Lucide-flavoured
+pack tuned to the app's iconography. Every icon is a `24×24` viewBox drawn
+with `stroke="currentColor"` and `strokeWidth={2}`, so it inherits colour from
+whatever token you pass and scales cleanly at any size.
+
+**Not a shipped package.** These live under
+`apps/storybook/docs/showcase/_components/icons/pack.tsx` and render only in
+Storybook (which runs under `react-native-web`). In a real RN app you'd wire
+them into `@rn-ds/icons` with `react-native-svg`; the pack file is a
+starting point for that codegen.
+
+## The pack
+
+Each cell shows the icon at 24px and its Lucide-style slug.
+
+<Default />
+
+## Sizes
+
+Icons scale via the `size` prop (`px`). Common sizes:
+
+- **14px** — inside `Row` and metadata (paired with body copy).
+- **18px** — inside `Banner` and inline callouts.
+- **22px** — default; the size `IconButton` expects.
+- **28–48px** — hero and empty-state affordances.
+
+<Sizes />
+
+## Colours
+
+Colour comes from the `color` prop — always a token, never a hex.
+
+<Colours />
+
+## Using in composites
+
+```tsx
+import { LeafIcon, PinIcon, CalendarIcon } from './icons/pack';
+import { Row } from '@rn-ds/components';
+import { colors } from '@rn-ds/tokens';
+
+<Row icon={<LeafIcon size={14} color={colors.inkMuted} />}>
+  Soil health test
+</Row>
+
+<Row icon={<PinIcon />}>Karawang, West Java</Row>
+
+<Row icon={<CalendarIcon />}>Requested in 3 days</Row>
+```
+
+Every composite on this section imports from the same pack — see the
+Anatomy snippets on each page.
+
+## Props
+
+| Prop          | Type   | Default        | Description                                    |
+|---------------|--------|----------------|------------------------------------------------|
+| `size`        | number | `22`           | Width and height in pixels.                    |
+| `color`       | string | `colors.inkBody` | Any colour string; pass a token, never a hex. |
+| `strokeWidth` | number | `2`            | Stroke width in svg user units.                |
+| `title`       | string | —              | If set, marks the svg as `role="img"` with an `aria-label`. Omit for decorative icons. |

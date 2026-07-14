@@ -35,6 +35,16 @@ const preview: Preview = {
         order: [
           'Get Started',
           ['Introduction', 'Installation', 'Agent access (MCP)', 'Design language', 'Changelog'],
+          'Showcase',
+          [
+            'Overview',
+            'Request Card',
+            'Scheduled Service Card',
+            'Bill Summary',
+            'Product Recommendation',
+            'ChoiceList family',
+            'Icons',
+          ],
           'Foundations',
           ['Colour', 'Spacing', 'Radius', 'Typography'],
           'Components',
